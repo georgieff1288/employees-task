@@ -6,11 +6,11 @@ import { BehaviorSubject } from "rxjs";
   providedIn: 'root'
 })
 export class EmployeesService {
-  private employee = new BehaviorSubject<any>({});
+  private employee = new BehaviorSubject<any>([]);
   addedEmployee = this.employee.asObservable();
   constructor() { }
 
   addEmployee(emp:Employee){
-    this.employee.next(emp);
+    this.employee.next([...this.employee.value, emp]);
   }
 }
