@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Employee } from "../models/employee.model";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeesService {
-  employeesList = [{name:'Ivan Ivanov', department:'Marketing', address:{city:'Ruse', street:'Aleksandrovska'}},
-    {name:'Maria Petrova', department:'HR', address:{city:'Varna', street:'Nikolaevska'}},
-    {name:'Georgi Georgiev', department:'Sales', address:{city:'Sofia', street:'Graf Ignatiev'}}];
+  private employee = new BehaviorSubject<any>({});
+  addedEmployee = this.employee.asObservable();
   constructor() { }
 
-  getEmployees(){
-    return this.employeesList;
+  addEmployee(emp:Employee){
+    this.employee.next(emp);
   }
 }

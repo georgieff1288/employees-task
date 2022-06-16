@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { EmployeesService } from "../../services/employees.service";
 
 @Component({
   selector: 'app-employees-form',
@@ -14,7 +15,7 @@ export class EmployeesFormComponent implements OnInit {
     street: new FormControl('', [Validators.required])
   });
 
-  constructor() { }
+  constructor(private emp:EmployeesService) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +25,14 @@ export class EmployeesFormComponent implements OnInit {
   get street() { return this.employeeForm.get('street'); }
 
   addEmployee(){
-    console.log(this.employeeForm.value)
+    let obj = {
+      name: this.employeeForm.value.name!,
+      department: this.employeeForm.value.department!,
+      address: {
+        city: this.employeeForm.value.city!,
+        street:this.employeeForm.value.street!
+      }
+    }
+    this.emp.addEmployee(obj);
   }
 }
