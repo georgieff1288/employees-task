@@ -1,4 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import "scss/variables";
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }
+
+.large-text{
+  font-family: 'Roboto, sans-serif';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 30px;
+  color: $primary-text-color;
+}
+
+.medium-text{
+  font-family: 'Roboto, sans-serif';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: $primary-text-color;
+}
+
+.small-text{
+  font-family: 'Roboto, sans-serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: $primary-text-color;
+}

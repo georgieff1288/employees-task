@@ -1,0 +1,74 @@
+@import "../../../scss/variables";
+
+.form-container{
+  display: flex;
+  justify-content: center;
+}
+
+.row{
+  display: flex;
+  @media (max-width: $breakpoint-small) {
+    display: block;
+  }
+}
+
+.col{
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+span{
+  color: red;
+}
+
+label{
+  color: $secondary-text-color;
+}
+
+input{
+  background:$input-background;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  height: 35px;
+  width: 40vw;
+  border-radius: 5px;
+  @media (max-width: $breakpoint-small) {
+    width: 90vw;
+  }
+}
+
+select{
+  background:$input-background;
+  margin-bottom: 20px;
+  margin-top: 24px;
+  height: 38px;
+  width: 40.5vw;
+  border-radius: 5px;
+  @media (max-width: $breakpoint-small) {
+    width: 90vw;
+  }
+}
+
+.btn-div{
+  display: flex;
+  justify-content: center;
+}
+
+#btn-add:disabled{
+  background-color: rgb(230, 250, 255);
+}
+
+.btn{
+  cursor: pointer;
+  width: 10vw;
+  height: 35px;
+  border-radius: 5px;
+  background-color: rgb(128, 229, 255);
+  font-family: 'Roboto, sans-serif';
+  font-size: 17px;
+  font-weight: bold;
+  color: $secondary-text-color;
+  @media (max-width: $breakpoint-large) {
+    width: 40vw;
+  }
+}

@@ -1,1 +1,54 @@
-<p>employees-form works!</p>
+<div class="form-container">
+  <form [formGroup]="employeeForm" (ngSubmit)="addEmployee()">
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <label class="small-text" for="name">Name: </label><br>
+          <span *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+            <span class="small-text" *ngIf="name?.errors?.['required']"> Name is required.</span>
+          </span>
+        </div>
+        <input class="" id="name" type="text" formControlName="name" >
+      </div>
+      <div class="col">
+<!--        <div class="row">-->
+<!--          <label class="small-text" for="name">Department: </label><br>-->
+<!--          <span *ngIf="department?.invalid && (department?.dirty || department?.touched)">-->
+<!--            <span class="small-text" *ngIf="department?.errors?.['required']"> Department is required.</span>-->
+<!--          </span>-->
+<!--        </div>-->
+<!--        <input class="" id="department" type="text" formControlName="department" >-->
+        <select formControlName="department">
+          <option value="" selected disabled>Select department</option>
+          <option value="Finance">Finance</option>
+          <option value="HR">HR</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Sales">Sales</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <label class="small-text" for="city">City: </label><br>
+          <span *ngIf="city?.invalid && (city?.dirty || city?.touched)">
+            <span class="small-text" *ngIf="city?.errors?.['required']"> City is required.</span>
+          </span>
+        </div>
+        <input class="" id="city" type="text" formControlName="city" >
+      </div>
+      <div class="col">
+        <div class="row">
+          <label class="small-text" for="street">Street: </label><br>
+          <span *ngIf="street?.invalid && (street?.dirty || street?.touched)">
+            <span class="small-text" *ngIf="street?.errors?.['required']"> Street is required.</span>
+          </span>
+        </div>
+        <input class="" id="street" type="text" formControlName="street" >
+      </div>
+    </div>
+    <div class="btn-div">
+      <button class="btn" type="submit" id="btn-add" [disabled]="!employeeForm.valid">Submit</button>
+    </div>
+  </form>
+</div>
