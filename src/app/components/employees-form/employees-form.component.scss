@@ -33,7 +33,7 @@ input{
   width: 40vw;
   border-radius: 5px;
   @media (max-width: $breakpoint-small) {
-    width: 90vw;
+    width: 80vw;
   }
 }
 
@@ -45,7 +45,7 @@ select{
   width: 40.5vw;
   border-radius: 5px;
   @media (max-width: $breakpoint-small) {
-    width: 90vw;
+    width: 100%;
   }
 }
 
@@ -55,7 +55,7 @@ select{
 }
 
 #btn-add:disabled{
-  background-color: rgb(230, 250, 255);
+  background-color: rgb(220, 164, 164);
 }
 
 .btn{

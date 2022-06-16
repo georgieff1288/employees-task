@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EmployeesService } from "../../services/employees.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-employees-form',
@@ -15,7 +16,7 @@ export class EmployeesFormComponent implements OnInit {
     street: new FormControl('', [Validators.required])
   });
 
-  constructor(private emp:EmployeesService) { }
+  constructor(private emp:EmployeesService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -34,5 +35,6 @@ export class EmployeesFormComponent implements OnInit {
       }
     }
     this.emp.addEmployee(obj);
+    this.router.navigate(['/']);
   }
 }

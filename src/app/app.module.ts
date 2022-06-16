@@ -11,6 +11,7 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 import { EmployeesInfoComponent } from './components/employees-info/employees-info.component';
 import { EmployeesFormComponent } from './components/employees-form/employees-form.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -22,7 +23,8 @@ import { EmployeesFormComponent } from './components/employees-form/employees-fo
     EmployeesComponent,
     EmployeesListComponent,
     EmployeesInfoComponent,
-    EmployeesFormComponent
+    EmployeesFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

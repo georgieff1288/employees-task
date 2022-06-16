@@ -1,0 +1,11 @@
+@import "../../../scss/variables";
+
+.employees-container{
+  height: 100vh;
+  background: $components-background;
+}
+
+.child-container{
+  padding: 100px 10px 0 10px;
+}
+

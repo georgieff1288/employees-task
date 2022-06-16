@@ -16,8 +16,7 @@ export class EmployeesListComponent implements OnInit {
   ngOnInit(): void {
     this.emp.addedEmployee.subscribe((value) => {
       if(value.name){
-        this.employees.push(value)
-        console.log(this.employees)
+        this.employees.push(value);
       }
     })
   }
