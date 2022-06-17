@@ -11,20 +11,13 @@
         <input class="" id="name" type="text" formControlName="name" >
       </div>
       <div class="col">
-<!--        <div class="row">-->
-<!--          <label class="small-text" for="name">Department: </label><br>-->
-<!--          <span *ngIf="department?.invalid && (department?.dirty || department?.touched)">-->
-<!--            <span class="small-text" *ngIf="department?.errors?.['required']"> Department is required.</span>-->
-<!--          </span>-->
-<!--        </div>-->
-<!--        <input class="" id="department" type="text" formControlName="department" >-->
-        <select formControlName="department">
-          <option value="" selected disabled>Select department</option>
-          <option value="Finance">Finance</option>
-          <option value="HR">HR</option>
-          <option value="Marketing">Marketing</option>
-          <option value="Sales">Sales</option>
-        </select>
+        <div class="row">
+          <label class="small-text" for="phone">Phone: </label><br>
+          <span *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+            <span class="small-text" *ngIf="phone?.errors?.['required']"> Phone is required.</span>
+          </span>
+        </div>
+        <input class="" id="phone" type="number"  formControlName="phone" >
       </div>
     </div>
     <div class="row">
@@ -46,6 +39,15 @@
         </div>
         <input class="" id="street" type="text" formControlName="street" >
       </div>
+    </div>
+    <div class="select-div">
+      <select formControlName="department">
+        <option value="" selected disabled>Select department</option>
+        <option value="Finance">Finance</option>
+        <option value="HR">HR</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Sales">Sales</option>
+      </select>
     </div>
     <div class="btn-div">
       <button class="btn" type="submit" id="btn-add" [disabled]="!employeeForm.valid">Submit</button>

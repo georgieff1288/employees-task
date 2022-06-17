@@ -13,7 +13,8 @@ export class EmployeesFormComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     department: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
-    street: new FormControl('', [Validators.required])
+    street: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required])
   });
 
   constructor(private emp:EmployeesService, private router:Router) { }
@@ -24,11 +25,13 @@ export class EmployeesFormComponent implements OnInit {
   get department() { return this.employeeForm.get('department'); }
   get city() { return this.employeeForm.get('city'); }
   get street() { return this.employeeForm.get('street'); }
+  get phone() { return this.employeeForm.get('phone'); }
 
   addEmployee(){
     let obj = {
       name: this.employeeForm.value.name!,
       department: this.employeeForm.value.department!,
+      phone: this.employeeForm.value.phone!,
       address: {
         city: this.employeeForm.value.city!,
         street:this.employeeForm.value.street!

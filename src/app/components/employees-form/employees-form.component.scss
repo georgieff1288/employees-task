@@ -36,13 +36,16 @@ input{
     width: 80vw;
   }
 }
+.select-div{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 20px 0;
+}
 
 select{
   background:$input-background;
-  margin-bottom: 20px;
-  margin-top: 24px;
   height: 38px;
-  width: 40.5vw;
+  width: 40%;
   border-radius: 5px;
   @media (max-width: $breakpoint-small) {
     width: 100%;
