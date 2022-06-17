@@ -4,6 +4,15 @@
   "newProjectRoot": "projects",
   "projects": {
     "employees-task": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "bg": {
+            "translation": "src/locale/messages.bg.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +26,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": ["bg"],
             "outputPath": "dist/employees-task",
             "index": "src/index.html",
             "main": "src/main.ts",

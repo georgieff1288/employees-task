@@ -1,29 +1,29 @@
 <div class="table-container" *ngIf="employees.length > 0">
   <table mat-table [dataSource]="employees">
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef class="medium-text"> Name </th>
+      <th mat-header-cell *matHeaderCellDef class="medium-text" i18n> Name </th>
       <td mat-cell *matCellDef="let employee" class="small-text"> {{employee.name}} </td>
     </ng-container>
     <ng-container matColumnDef="department">
-      <th mat-header-cell *matHeaderCellDef class="medium-text"> Department </th>
+      <th mat-header-cell *matHeaderCellDef class="medium-text" i18n> Department </th>
       <td mat-cell *matCellDef="let employee" class="small-text"> {{employee.department}} </td>
     </ng-container>
     <ng-container matColumnDef="phone">
-      <th mat-header-cell *matHeaderCellDef class="medium-text"> Phone </th>
+      <th mat-header-cell *matHeaderCellDef class="medium-text" i18n> Phone </th>
       <td mat-cell *matCellDef="let employee" class="small-text"> {{employee.phone}} </td>
     </ng-container>
     <ng-container matColumnDef="city">
-      <th mat-header-cell *matHeaderCellDef class="medium-text"> City </th>
+      <th mat-header-cell *matHeaderCellDef class="medium-text" i18n> City </th>
       <td mat-cell *matCellDef="let employee" class="small-text"> {{employee.address.city}}</td>
     </ng-container>
     <ng-container matColumnDef="street">
-      <th mat-header-cell *matHeaderCellDef class="medium-text"> Street </th>
+      <th mat-header-cell *matHeaderCellDef class="medium-text" i18n> Street </th>
       <td mat-cell *matCellDef="let employee" class="small-text"> {{employee.address.street}}</td>
     </ng-container>
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef class="medium-text"> </th>
       <td mat-cell *matCellDef="let employee" class="small-text">
-        <button class="delete-btn" mat-raised-button (click)="openDialog(employee.name, employee.id)">Delete</button>
+        <button class="delete-btn" mat-raised-button (click)="openDialog(employee.name, employee.id)" i18n>Delete</button>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -31,5 +31,5 @@
   </table>
 </div>
 
-<p class="large-text msg" *ngIf="employees.length == 0">There is no employees added.</p>
+<p class="large-text msg" *ngIf="employees.length == 0" i18n>There is no employees added.</p>
 
