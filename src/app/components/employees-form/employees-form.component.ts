@@ -29,6 +29,7 @@ export class EmployeesFormComponent implements OnInit {
 
   addEmployee(){
     let obj = {
+      id: 0,
       name: this.employeeForm.value.name!,
       department: this.employeeForm.value.department!,
       phone: this.employeeForm.value.phone!,

@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { EmployeesService } from "../../services/employees.service";
 import { Subscription } from "rxjs";
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.component";
 
 @Component({
   selector: 'app-employees-list',
@@ -8,23 +10,32 @@ import { Subscription } from "rxjs";
   styleUrls: ['./employees-list.component.scss']
 })
 export class EmployeesListComponent implements OnInit, OnDestroy {
-  employees = [
-    {name:'Ivan Ivanov', department:'Marketing', phone: 359123456789, address:{city:'Ruse', street:'Aleksandrovska'}},
-    {name:'Maria Petrova', department:'HR', phone: 359666333999, address:{city:'Varna', street:'Nikolaevska'}},
-    {name:'Georgi Georgiev', department:'Sales', phone: 359123123123, address:{city:'Sofia', street:'Graf Ignatiev'}}
-  ];
-  displayedColumns: string[] = ['name', 'department', 'phone', 'city', 'address'];
+  employees = [];
+  displayedColumns: string[] = ['name', 'department', 'phone', 'city', 'street', 'delete'];
   empSubscription!: Subscription;
-  constructor(private emp: EmployeesService) { }
+  constructor(private emp: EmployeesService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.empSubscription = this.emp.addedEmployee.subscribe((value) => {
-      if(value.length>0){
-        this.employees.push(...value);
-      }
-    })
+    this.empSubscription = this.emp.employeesObservable.subscribe((value) => {
+      this.employees = value;
+    });
   }
   ngOnDestroy() {
     this.empSubscription.unsubscribe();
+  }
+  openDialog(name: string, id: number): void {
+    let dialogRef = this.dialog.open(ConfirmModalComponent, {
+      data:{text: `Would you like to delete ${name}?` },
+      width: '250px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.delete(id);
+      }
+    });
+  }
+
+  delete(id: number){
+    this.emp.deleteEmployee(id);
   }
 }
