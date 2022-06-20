@@ -100,6 +100,13 @@
           <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="7045509829928322290" datatype="html">
+        <source>Number of employees: <x id="INTERPOLATION" equiv-text="{{employeesCounter}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-info/employees-info.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="8778616811237742446" datatype="html">
         <source> Name </source>
         <context-group purpose="location">
@@ -153,7 +160,7 @@
         <source>Would you like to delete <x id="PH" equiv-text="name"/>?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3537701360947660901" datatype="html">

@@ -114,6 +114,14 @@
           <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="7045509829928322290" datatype="html">
+        <source>Number of employees: <x id="INTERPOLATION" equiv-text="{{employeesCounter}}"/></source>
+        <target>Брой служители: <x id="INTERPOLATION" equiv-text="{{employeesCounter}}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-info/employees-info.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="8778616811237742446" datatype="html">
         <source> Name </source>
         <target> Име </target>
@@ -164,7 +172,7 @@
       </trans-unit>
       <trans-unit id="2746072256627156491" datatype="html">
         <source>There is no employees added.</source>
-        <target>Няма добавени служители.</target>
+        <target>Няма въведени служители</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.html</context>
           <context context-type="linenumber">34</context>
@@ -175,7 +183,7 @@
         <target>Искате ли да изтриете <x id="PH" equiv-text="name"/>?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3537701360947660901" datatype="html">
@@ -188,7 +196,7 @@
       </trans-unit>
       <trans-unit id="7880067974191422443" datatype="html">
         <source>Add employee</source>
-        <target>Добави служители</target>
+        <target>Добави служител</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/header/header.component.html</context>
           <context context-type="linenumber">3</context>
