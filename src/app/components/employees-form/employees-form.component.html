@@ -3,18 +3,18 @@
     <div class="row">
       <div class="col">
         <div class="row">
-          <label class="small-text" for="name" i18n>Name: </label><br>
+          <label class="small-text" for="name" >{{'Name' | translate}}: </label><br>
           <span *ngIf="name?.invalid && (name?.dirty || name?.touched)">
-            <span class="small-text" *ngIf="name?.errors?.['required']" i18n> Name is required.</span>
+            <span class="small-text" *ngIf="name?.errors?.['required']"> {{'Name is required' | translate}}.</span>
           </span>
         </div>
         <input class="" id="name" type="text" formControlName="name" >
       </div>
       <div class="col">
         <div class="row">
-          <label class="small-text" for="phone" i18n>Phone: </label><br>
+          <label class="small-text" for="phone">{{'Phone' | translate}}: </label><br>
           <span *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
-            <span class="small-text" *ngIf="phone?.errors?.['required']" i18n> Phone is required.</span>
+            <span class="small-text" *ngIf="phone?.errors?.['required']"> {{'Phone is required' | translate}}.</span>
           </span>
         </div>
         <input class="" id="phone" type="number"  formControlName="phone" >
@@ -23,18 +23,18 @@
     <div class="row">
       <div class="col">
         <div class="row">
-          <label class="small-text" for="city" i18n>City: </label><br>
+          <label class="small-text" for="city">{{'City' | translate}}: </label><br>
           <span *ngIf="city?.invalid && (city?.dirty || city?.touched)">
-            <span class="small-text" *ngIf="city?.errors?.['required']" i18n> City is required.</span>
+            <span class="small-text" *ngIf="city?.errors?.['required']"> {{'City is required' | translate}}.</span>
           </span>
         </div>
         <input class="" id="city" type="text" formControlName="city" >
       </div>
       <div class="col">
         <div class="row">
-          <label class="small-text" for="street" i18n>Street: </label><br>
+          <label class="small-text" for="street">{{'Street' | translate}}: </label><br>
           <span *ngIf="street?.invalid && (street?.dirty || street?.touched)">
-            <span class="small-text" *ngIf="street?.errors?.['required']" i18n> Street is required.</span>
+            <span class="small-text" *ngIf="street?.errors?.['required']"> {{'Street is required' | translate}}.</span>
           </span>
         </div>
         <input class="" id="street" type="text" formControlName="street" >
@@ -42,15 +42,15 @@
     </div>
     <div class="select-div">
       <select formControlName="department">
-        <option value="" selected disabled i18n>Select department</option>
-        <option value="Finance" i18n>Finance</option>
-        <option value="HR" i18n>HR</option>
-        <option value="Marketing" i18n>Marketing</option>
-        <option value="Sales" i18n>Sales</option>
+        <option value="" selected disabled>{{'Select department' | translate}}</option>
+        <option value="Finance">{{'Finance' | translate}}</option>
+        <option value="HR">{{'HR' | translate}}</option>
+        <option value="Marketing">{{'Marketing' | translate}}</option>
+        <option value="Sales">{{'Sales' | translate}}</option>
       </select>
     </div>
     <div class="btn-div">
-      <button class="btn" type="submit" id="btn-add" [disabled]="!employeeForm.valid" i18n>Submit</button>
+      <button class="btn" type="submit" id="btn-add" [disabled]="!employeeForm.valid">{{'Submit' | translate}}</button>
     </div>
   </form>
 </div>
