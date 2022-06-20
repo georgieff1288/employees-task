@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="402785015655073812" datatype="html">
+        <source>Name: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5865244031332260942" datatype="html">
+        <source> Name is required.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2052559695041471325" datatype="html">
+        <source>Phone: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5995290952218562592" datatype="html">
+        <source> Phone is required.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4956200821691089082" datatype="html">
+        <source>City: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1134370915182909381" datatype="html">
+        <source> City is required.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6858680300393151723" datatype="html">
+        <source>Street: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8175450193818400776" datatype="html">
+        <source> Street is required.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="434769574462813229" datatype="html">
+        <source>Select department</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7004693272506296337" datatype="html">
+        <source>Finance</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2542803911675450798" datatype="html">
+        <source>HR</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8429815558809569263" datatype="html">
+        <source>Marketing</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7197870580140559288" datatype="html">
+        <source>Sales</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="935187492052582731" datatype="html">
+        <source>Submit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-form/employees-form.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7045509829928322290" datatype="html">
+        <source>Number of employees: <x id="INTERPOLATION" equiv-text="{{employeesCounter}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-info/employees-info.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8778616811237742446" datatype="html">
+        <source> Name </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="327853893306460458" datatype="html">
+        <source> Department </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2598980171403947318" datatype="html">
+        <source> Phone </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2225846327777442642" datatype="html">
+        <source> City </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7780388064508644633" datatype="html">
+        <source> Street </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7022070615528435141" datatype="html">
+        <source>Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2746072256627156491" datatype="html">
+        <source>There is no employees added.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5822338632813459460" datatype="html">
+        <source>Would you like to delete <x id="PH" equiv-text="name"/>?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/employees-list/employees-list.component.ts</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3537701360947660901" datatype="html">
+        <source>Employees</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7880067974191422443" datatype="html">
+        <source>Add employee</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header/header.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8998179362936748717" datatype="html">
+        <source>OK</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/shared/confirm-modal/confirm-modal.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2159130950882492111" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/shared/confirm-modal/confirm-modal.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
