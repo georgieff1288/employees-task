@@ -3,6 +3,7 @@ import { EmployeesService } from "../../services/employees.service";
 import { Subscription } from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.component";
+import { Employee } from "../../models/employee.model"
 
 @Component({
   selector: 'app-employees-list',
@@ -10,7 +11,7 @@ import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.com
   styleUrls: ['./employees-list.component.scss']
 })
 export class EmployeesListComponent implements OnInit, OnDestroy {
-  employees = [];
+  employees: Employee[] = [];
   displayedColumns: string[] = ['name', 'department', 'phone', 'city', 'street', 'delete'];
   empSubscription!: Subscription;
   constructor(private emp: EmployeesService, public dialog: MatDialog) { }
@@ -20,7 +21,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
       this.employees = value;
     });
   }
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.empSubscription.unsubscribe();
   }
   openDialog(name: string, id: number): void {
@@ -35,7 +36,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
     });
   }
 
-  delete(id: number){
+  delete(id: number): void {
     this.emp.deleteEmployee(id);
   }
 }

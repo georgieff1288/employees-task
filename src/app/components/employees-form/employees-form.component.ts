@@ -27,7 +27,7 @@ export class EmployeesFormComponent implements OnInit {
   get street() { return this.employeeForm.get('street'); }
   get phone() { return this.employeeForm.get('phone'); }
 
-  addEmployee(){
+  addEmployee(): void {
     let obj = {
       id: 0,
       name: this.employeeForm.value.name!,

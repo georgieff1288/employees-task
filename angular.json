@@ -7,10 +7,7 @@
       "i18n": {
         "sourceLocale": "en-US",
         "locales": {
-          "bg": {
-            "translation": "src/locale/messages.bg.xlf",
-            "baseHref": ""
-          }
+          "bg-BG": "src/locale/messages.bg.xlf"
         }
       },
       "projectType": "application",
@@ -26,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "localize": ["bg"],
+            "localize": ["bg-BG"],
             "outputPath": "dist/employees-task",
             "index": "src/index.html",
             "main": "src/main.ts",
