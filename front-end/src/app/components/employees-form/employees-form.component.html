@@ -1,14 +1,16 @@
+<app-error-message [errorMsg]="errorMsg"></app-error-message>
+
 <div class="form-container">
   <form [formGroup]="employeeForm" (ngSubmit)="addEmployee()">
     <div class="row">
       <div class="col">
         <div class="row">
-          <label class="small-text" for="name" >{{'Name' | translate}}: </label><br>
-          <span *ngIf="name?.invalid && (name?.dirty || name?.touched)">
-            <span class="small-text" *ngIf="name?.errors?.['required']"> {{'Name is required' | translate}}.</span>
+          <label class="small-text" for="employee_name" >{{'Name' | translate}}: </label><br>
+          <span *ngIf="employee_name?.invalid && (employee_name?.dirty || employee_name?.touched)">
+            <span class="small-text" *ngIf="employee_name?.errors?.['required']"> {{'Name is required' | translate}}.</span>
           </span>
         </div>
-        <input class="" id="name" type="text" formControlName="name" >
+        <input class="" id="employee_name" type="text" formControlName="employee_name" >
       </div>
       <div class="col">
         <div class="row">
@@ -41,12 +43,12 @@
       </div>
     </div>
     <div class="select-div">
-      <select formControlName="department">
+      <select formControlName="department_id">
         <option value="" selected disabled>{{'Select department' | translate}}</option>
-        <option value="Finance">{{'Finance' | translate}}</option>
-        <option value="HR">{{'HR' | translate}}</option>
-        <option value="Marketing">{{'Marketing' | translate}}</option>
-        <option value="Sales">{{'Sales' | translate}}</option>
+        <option value="1">{{'Finance' | translate}}</option>
+        <option value="2">{{'HR' | translate}}</option>
+        <option value="3">{{'Marketing' | translate}}</option>
+        <option value="4">{{'Sales' | translate}}</option>
       </select>
     </div>
     <div class="btn-div">

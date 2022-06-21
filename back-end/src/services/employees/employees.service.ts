@@ -9,6 +9,7 @@ export class EmployeesService {
         private employeesRepository: typeof Employee
     ) {
     }
+
     async getAllEmployees(): Promise<Employee[]> {
         return this.employeesRepository.findAll<Employee>({
             include:[{
@@ -16,5 +17,17 @@ export class EmployeesService {
                 as: 'department'
             }]
         });
+    }
+
+    async addEmployee(emp): Promise<Employee> {
+        return this.employeesRepository.create(emp);
+    }
+
+    async deleteEmployee(empId): Promise<any> {
+        return this.employeesRepository.destroy({
+            where:{
+                id: empId
+            }
+        })
     }
 }

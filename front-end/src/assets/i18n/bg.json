@@ -18,5 +18,5 @@
   "Number of employees": "Брой служители",
   "Department": "Отдел",
   "Delete": "Изтрий",
-  "There is no employees added": "Няма добавени служители"
+  "There is no employees in database": "В базата данни няма служители"
 }

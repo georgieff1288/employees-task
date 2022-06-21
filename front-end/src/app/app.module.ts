@@ -18,6 +18,7 @@ import { EmployeesInfoComponent } from './components/employees-info/employees-in
 import { EmployeesFormComponent } from './components/employees-form/employees-form.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ConfirmModalComponent } from './components/shared/confirm-modal/confirm-modal.component';
+import { ErrorMessageComponent } from './components/shared/error-message/error-message.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -32,7 +33,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EmployeesInfoComponent,
     EmployeesFormComponent,
     HeaderComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    ErrorMessageComponent
   ],
   imports: [
     BrowserModule,

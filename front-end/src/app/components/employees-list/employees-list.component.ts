@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { EmployeesService } from "../../services/employees.service";
-import { Subscription } from "rxjs";
+import {BehaviorSubject, Observable, Subscription} from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.component";
 import { Employee } from "../../models/employee.model"
@@ -11,19 +11,30 @@ import { Employee } from "../../models/employee.model"
   styleUrls: ['./employees-list.component.scss']
 })
 export class EmployeesListComponent implements OnInit, OnDestroy {
-  employees:Employee[] = [];
+  // employees = new BehaviorSubject<Employee[]>([]);
+  // empObservable = this.employees.asObservable();
+  employees!: Observable<Employee[]>;
+  errorMsg: string = '';
   displayedColumns: string[] = ['name', 'department', 'phone', 'city', 'street', 'delete'];
-  empSubscription!: Subscription;
+  notificationMsg: string = '';
+  delSubscription!: Subscription;
   constructor(private emp: EmployeesService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.empSubscription = this.emp.getAllEmployees().subscribe(value => {
-      this.employees = value;
-    });
+    this.employees = this.emp.getAllEmployees();
+    this.employees.subscribe({
+      next: res => {
+        if(res.length == 0){
+          this.notificationMsg = 'There is no employees in database'
+        }
+      },
+      error: error => this.errorMsg = error
+    })
   }
   ngOnDestroy(): void {
-    this.empSubscription.unsubscribe();
+    this.delSubscription?.unsubscribe();
   }
+
   openDialog(name: string, id: number): void {
     let dialogRef = this.dialog.open(ConfirmModalComponent, {
       data:{text:`Would you like to delete ${name}?`},
@@ -37,6 +48,8 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   }
 
   delete(id: number): void {
-    this.emp.deleteEmployee(id);
+    this.delSubscription = this.emp.deleteEmployee(id).subscribe({
+      error: error => this.errorMsg = error
+    })
   }
 }
