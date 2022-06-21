@@ -1,9 +1,10 @@
-import {Address} from "./address.model";
+import {Department} from "./department.model";
 
 export interface Employee {
   id: number,
-  name: string;
-  department: string;
+  emplopyee_name: string;
   phone: string;
-  address: Address;
+  city: string,
+  street: string
+  department: Department;
 }

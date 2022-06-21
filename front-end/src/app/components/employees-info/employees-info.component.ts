@@ -8,16 +8,16 @@ import {Subscription} from "rxjs";
   styleUrls: ['./employees-info.component.scss']
 })
 export class EmployeesInfoComponent implements OnInit, OnDestroy {
-  employeesCounter: number = 0;
+  employeesCounter: number = 10;
   subscription = new Subscription();
   constructor(private emp: EmployeesService) { }
 
   ngOnInit(): void {
-    this.subscription = this.emp.employeesObservable.subscribe(value => {
-      this.employeesCounter = value.length;
-    })
+    // this.subscription = this.emp.employeesObservable.subscribe(value => {
+    //   this.employeesCounter = value.length;
+    // })
   }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 }

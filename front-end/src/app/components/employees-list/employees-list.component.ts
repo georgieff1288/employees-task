@@ -11,13 +11,13 @@ import { Employee } from "../../models/employee.model"
   styleUrls: ['./employees-list.component.scss']
 })
 export class EmployeesListComponent implements OnInit, OnDestroy {
-  employees: Employee[] = [];
+  employees:Employee[] = [];
   displayedColumns: string[] = ['name', 'department', 'phone', 'city', 'street', 'delete'];
   empSubscription!: Subscription;
   constructor(private emp: EmployeesService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.empSubscription = this.emp.employeesObservable.subscribe((value) => {
+    this.empSubscription = this.emp.getAllEmployees().subscribe(value => {
       this.employees = value;
     });
   }
