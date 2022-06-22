@@ -38,8 +38,7 @@ export class EditEmployeeComponent implements OnInit {
     }
   }
   editEmployee(employee: Employee){
-    employee.id = this.id;
-    this.subscription =this.emp.editEmployee(employee).subscribe({
+    this.subscription =this.emp.editEmployee(employee, this.id).subscribe({
       next: () => this.router.navigate(['/']),
       error: error => this.errorMsg = error
     })

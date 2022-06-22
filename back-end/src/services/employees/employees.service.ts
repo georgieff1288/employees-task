@@ -24,18 +24,18 @@ export class EmployeesService {
         return this.employeesRepository.create(emp);
     }
 
-    async deleteEmployee(empId): Promise<number> {
+    async deleteEmployee(id): Promise<number> {
         return this.employeesRepository.destroy({
             where:{
-                id: empId
+                id: id
             }
         })
     }
 
-    async getEmployeeById(empId): Promise<Employee> {
+    async getEmployeeById(id): Promise<Employee> {
         return  this.employeesRepository.findOne({
             where:{
-                id: empId
+                id: id
             },
             include:[{
                 model: Department,
@@ -44,7 +44,7 @@ export class EmployeesService {
         })
     }
 
-    async  editEmployee(employee): Promise<any> {
-        return this.employeesRepository.update(employee, {where: {id: employee.id}});
+    async  editEmployee(employee, id): Promise<any> {
+        return this.employeesRepository.update(employee, {where: {id: id}});
     }
 }

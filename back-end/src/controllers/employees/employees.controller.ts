@@ -1,36 +1,35 @@
-import {Controller, Get, Post, Req, Delete, Put, Body, Param} from '@nestjs/common';
+import {Controller, Get, Post, Delete, Put, Body, Param} from '@nestjs/common';
 import { EmployeesService } from "../../services/employees/employees.service";
 import { Employee } from "../../models/employee/employee.entity";
-import { Request } from 'express';
 import { AddEmployeeDto } from "../../dtos/add-employee.dto";
 import { FindOneParams } from "../../dtos/find-one-params";
 
-@Controller('api/employees')
+@Controller('api/employees/')
 export class EmployeesController {
     constructor(private  readonly employeeService: EmployeesService) {
     }
-    @Get('get-all-employees')
+    @Get()
     getAllEmployees(): Promise<Employee[]> {
         return this.employeeService.getAllEmployees();
     }
 
-    @Post('add-employee')
+    @Post()
     addEmployee(@Body() employee: AddEmployeeDto): Promise<Employee> {
         return this.employeeService.addEmployee(employee);
     }
 
-    @Delete('delete-employee/:id')
+    @Delete(':id')
     deleteEmployee(@Param() params: FindOneParams): Promise<number> {
         return this.employeeService.deleteEmployee(params.id);
     }
 
-    @Get('employee/:id')
+    @Get(':id')
     getEmployeeById(@Param() params: FindOneParams): Promise<Employee> {
         return this.employeeService.getEmployeeById(params.id);
     }
 
-    @Put('edit-employee')
-    editEmployee(@Body() addEmployee: AddEmployeeDto): Promise<Employee> {
-        return this.employeeService.editEmployee(addEmployee);
+    @Put('edit/:id')
+    editEmployee(@Body() addEmployee: AddEmployeeDto, @Param() params: FindOneParams): Promise<Employee> {
+        return this.employeeService.editEmployee(addEmployee, params.id);
     }
 }
