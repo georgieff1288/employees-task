@@ -8,8 +8,8 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 })
 export class EmployeesService {
   private endPoint = "http://localhost:3000/api/employees/";
-  numOfemplopyees = new BehaviorSubject<number>(0);
-  numOfEmplopyeesObservable = this.numOfemplopyees.asObservable();
+  numOfEmployees = new BehaviorSubject<number>(0);
+  numOfEmployeesObservable = this.numOfEmployees.asObservable();
 
   constructor(private http: HttpClient) { }
 

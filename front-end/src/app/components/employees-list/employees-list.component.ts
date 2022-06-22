@@ -26,7 +26,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
           this.notificationMsg = 'There is no employees in database'
         }
         this.employees.next(res);
-        this.emp.numOfemplopyees.next(res.length);
+        this.emp.numOfEmployees.next(res.length);
       },
       error: error => this.errorMsg = error
     });
@@ -52,7 +52,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
       next: ()=>{
         let newEmployees = this.employees.value.filter(obj => obj.id != id);
         this.employees.next(newEmployees);
-        this.emp.numOfemplopyees.next(newEmployees.length);
+        this.emp.numOfEmployees.next(newEmployees.length);
       },
       error: error => this.errorMsg = error
     });

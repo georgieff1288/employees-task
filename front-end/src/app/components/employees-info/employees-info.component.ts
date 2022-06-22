@@ -13,7 +13,7 @@ export class EmployeesInfoComponent implements OnInit, OnDestroy {
   constructor(private emp: EmployeesService) { }
 
   ngOnInit(): void {
-    this.subscription = this.emp.numOfEmplopyeesObservable.subscribe(
+    this.subscription = this.emp.numOfEmployeesObservable.subscribe(
       res => this.employeesCounter = res
     )
   }
