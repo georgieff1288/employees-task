@@ -13,7 +13,7 @@ import { Employee } from "../../models/employee.model"
 export class EmployeesListComponent implements OnInit, OnDestroy {
   employees = new BehaviorSubject<Employee[]>([]);
   errorMsg: string = '';
-  displayedColumns: string[] = ['name', 'department', 'phone', 'city', 'street', 'delete'];
+  displayedColumns: string[] = ['name', 'department', 'phone', 'city', 'street', 'buttons'];
   notificationMsg: string = '';
   getSubscription!: Subscription;
   delSubscription!: Subscription;

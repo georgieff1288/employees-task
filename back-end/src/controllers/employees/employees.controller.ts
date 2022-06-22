@@ -1,4 +1,4 @@
-import {Controller, Get, Post, Req, Delete, Param} from '@nestjs/common';
+import {Controller, Get, Post, Req, Delete, Put} from '@nestjs/common';
 import { EmployeesService } from "../../services/employees/employees.service";
 import { Employee } from "../../models/employee/employee.entity";
 import { Request } from 'express';
@@ -27,5 +27,15 @@ export class EmployeesController {
     @Delete('delete-employee/:id')
     deleteEmployee(@Req() request: Request){
         return this.employeeService.deleteEmployee(request.params.id);
+    }
+
+    @Get('employee/:id')
+    getEmployeeById(@Req() request: Request){
+        return this.employeeService.getEmployeeById(request.params.id);
+    }
+
+    @Put('edit-employee')
+    editEmployee(@Req() request: Request){
+        return this.employeeService.editEmployee(request.body);
     }
 }

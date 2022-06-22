@@ -5,6 +5,10 @@
   justify-content: center;
 }
 
+.form-title{
+  text-align: center;
+}
+
 .row{
   display: flex;
   @media (max-width: $breakpoint-small) {
@@ -61,7 +65,12 @@ select{
   background-color: rgb(220, 164, 164);
 }
 
+#btn-edit:disabled{
+  background-color: rgb(220, 164, 164);
+}
+
 .btn{
+  border-style: none;
   cursor: pointer;
   width: 10vw;
   height: 35px;

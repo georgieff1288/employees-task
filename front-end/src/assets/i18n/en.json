@@ -18,5 +18,8 @@
   "Number of employees": "Number of employees",
   "Department": "Department",
   "Delete": "Delete",
-  "TThere is no employees in database": "TThere is no employees in database"
+  "TThere is no employees in database": "TThere is no employees in database",
+  "Edit": "Edit",
+  "Add new employee": "Add new employee",
+  "Edit employee": "Edit employee"
 }

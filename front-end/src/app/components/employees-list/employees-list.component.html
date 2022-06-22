@@ -24,10 +24,11 @@
       <th mat-header-cell *matHeaderCellDef class="medium-text"> {{'Street' | translate}} </th>
       <td mat-cell *matCellDef="let employee" class="small-text"> {{employee.street}}</td>
     </ng-container>
-    <ng-container matColumnDef="delete">
+    <ng-container matColumnDef="buttons">
       <th mat-header-cell *matHeaderCellDef class="medium-text"> </th>
       <td mat-cell *matCellDef="let employee" class="small-text">
-        <button class="delete-btn" mat-raised-button (click)="openDialog(employee.employee_name, employee.id)">{{'Delete' | translate}}</button>
+        <button class="delete-btn btn" mat-raised-button (click)="openDialog(employee.employee_name, employee.id)">{{'Delete' | translate}}</button>
+        <a routerLink="/edit-employee/{{employee.id}}"><button class="edit-btn btn" mat-raised-button >{{'Edit' | translate}}</button></a>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

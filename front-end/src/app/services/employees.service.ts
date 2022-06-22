@@ -9,7 +9,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 export class EmployeesService {
   private endPoint = "http://localhost:3000/api/employees/";
   numOfemplopyees = new BehaviorSubject<number>(0);
-  numOfemplopyeesObservable = this.numOfemplopyees.asObservable();
+  numOfEmplopyeesObservable = this.numOfemplopyees.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +22,14 @@ export class EmployeesService {
   }
 
   deleteEmployee(id: number): Observable<Employee> {
-    return this.http.delete<Employee>(this.endPoint + 'delete-employee/' + id).pipe(catchError(this.handleError));
+    return this.http.delete<Employee>(this.endPoint + 'delete-employee/' + id, {withCredentials: true}).pipe(catchError(this.handleError));
+  }
+  getEmployeeById(id: number): Observable<Employee> {
+    return this.http.get<Employee>(this.endPoint + 'employee/' + id, {withCredentials: true}).pipe(catchError(this.handleError));
+  }
+
+  editEmployee(employee: Employee): Observable<Employee> {
+    return this.http.put<Employee>(this.endPoint + 'edit-employee', employee, {withCredentials: true}).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

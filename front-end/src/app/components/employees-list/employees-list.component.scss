@@ -37,11 +37,26 @@ table {
   padding: 15px 20px 15px 0;
 }
 
-.delete-btn{
-  background: rgb(220, 164, 164);
+.mat-column-buttons{
+  width: 200px !important;
+}
+
+.btn{
   padding: 6px;
   border-radius: 5px;
   border-style: none;
+  cursor: pointer;
+  width: 90px;
+}
+
+.delete-btn{
+  background: rgb(220, 164, 164);
+  margin-right: 10px;
+}
+
+.edit-btn{
+  background: rgb(102, 179, 255);
+  margin-left: 10px;
 }
 
 .msg{

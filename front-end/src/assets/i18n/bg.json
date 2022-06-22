@@ -18,5 +18,8 @@
   "Number of employees": "Брой служители",
   "Department": "Отдел",
   "Delete": "Изтрий",
-  "There is no employees in database": "В базата данни няма служители"
+  "There is no employees in database": "В базата данни няма служители",
+  "Edit": "Редактирай",
+  "Add new employee": "Добави нов служител",
+  "Edit employee": "Редактирай служителя"
 }
