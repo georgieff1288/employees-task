@@ -15,10 +15,12 @@ import { AppComponent } from './app.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 import { EmployeesInfoComponent } from './components/employees-info/employees-info.component';
-import { EmployeesFormComponent } from './components/employees-form/employees-form.component';
+import { EmployeesFormComponent } from './components/shared/employees-form/employees-form.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ConfirmModalComponent } from './components/shared/confirm-modal/confirm-modal.component';
 import { ErrorMessageComponent } from './components/shared/error-message/error-message.component';
+import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -34,7 +36,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     EmployeesFormComponent,
     HeaderComponent,
     ConfirmModalComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    EditEmployeeComponent,
+    AddEmployeeComponent
   ],
   imports: [
     BrowserModule,

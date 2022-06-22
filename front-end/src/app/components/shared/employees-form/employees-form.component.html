@@ -1,6 +1,3 @@
-<app-error-message [errorMsg]="errorMsg"></app-error-message>
-<p *ngIf="!id" class="form-title large-text">{{'Add new employee' | translate}}</p>
-<p *ngIf="id" class="form-title large-text">{{'Edit employee' | translate}}</p>
 <div class="form-container">
   <form [formGroup]="employeeForm" (ngSubmit)="submit()">
     <div class="row">
@@ -53,8 +50,7 @@
       </select>
     </div>
     <div class="btn-div">
-      <button *ngIf="!id" class="btn" type="submit" id="btn-add" [disabled]="!employeeForm.valid">{{'Submit' | translate}}</button>
-      <button *ngIf="id" class="btn" type="submit" id="btn-edit" [disabled]="!employeeForm.valid">{{'Edit' | translate}}</button>
+      <button class="btn" type="submit" id="btn-add" [disabled]="!employeeForm.valid">{{'Submit' | translate}}</button>
     </div>
   </form>
 </div>

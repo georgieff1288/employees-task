@@ -1,0 +1,3 @@
+<app-error-message [errorMsg]="errorMsg"></app-error-message>
+<p class="form-title large-text">{{'Edit employee' | translate}}</p>
+<app-employees-form (callbackFunction)="editEmployee($event)" [employee]="employee"></app-employees-form>
