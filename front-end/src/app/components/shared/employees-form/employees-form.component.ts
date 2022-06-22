@@ -27,7 +27,7 @@ export class EmployeesFormComponent implements OnInit, OnDestroy {
         if(res){
           this.employeeForm.patchValue({
             employee_name: res.employee_name,
-            department_id: res.department.department_id.toString(),
+            department_id: '' + res.department_id,
             city: res.city,
             street: res.street,
             phone: res.phone
@@ -51,9 +51,7 @@ export class EmployeesFormComponent implements OnInit, OnDestroy {
   submit(): void {
     let employee: Employee = {
       employee_name: this.employeeForm.value.employee_name!,
-      department: {
-        department_id: Number(this.employeeForm.value.department_id)
-      },
+      department_id: Number(this.employeeForm.value.department_id),
       phone: this.employeeForm.value.phone!,
       city: this.employeeForm.value.city!,
       street:this.employeeForm.value.street!

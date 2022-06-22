@@ -1,7 +1,9 @@
-import {Controller, Get, Post, Req, Delete, Put} from '@nestjs/common';
+import {Controller, Get, Post, Req, Delete, Put, Body, Param} from '@nestjs/common';
 import { EmployeesService } from "../../services/employees/employees.service";
 import { Employee } from "../../models/employee/employee.entity";
 import { Request } from 'express';
+import { AddEmployeeDto } from "../../dtos/add-employee.dto";
+import { FindOneParams } from "../../dtos/find-one-params";
 
 @Controller('api/employees')
 export class EmployeesController {
@@ -13,29 +15,22 @@ export class EmployeesController {
     }
 
     @Post('add-employee')
-    addEmployee(@Req() request: Request): Promise<Employee>{
-        let employee = {
-            employee_name: request.body.employee_name,
-            department_id: request.body.department.department_id,
-            phone: request.body.phone,
-            city: request.body.city,
-            street: request.body.street
-        }
+    addEmployee(@Body() employee: AddEmployeeDto): Promise<Employee> {
         return this.employeeService.addEmployee(employee);
     }
 
     @Delete('delete-employee/:id')
-    deleteEmployee(@Req() request: Request){
-        return this.employeeService.deleteEmployee(request.params.id);
+    deleteEmployee(@Param() params: FindOneParams): Promise<number> {
+        return this.employeeService.deleteEmployee(params.id);
     }
 
     @Get('employee/:id')
-    getEmployeeById(@Req() request: Request){
-        return this.employeeService.getEmployeeById(request.params.id);
+    getEmployeeById(@Param() params: FindOneParams): Promise<Employee> {
+        return this.employeeService.getEmployeeById(params.id);
     }
 
     @Put('edit-employee')
-    editEmployee(@Req() request: Request){
-        return this.employeeService.editEmployee(request.body);
+    editEmployee(@Body() addEmployee: AddEmployeeDto): Promise<Employee> {
+        return this.employeeService.editEmployee(addEmployee);
     }
 }

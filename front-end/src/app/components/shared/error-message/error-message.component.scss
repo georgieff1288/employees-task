@@ -1,5 +1,11 @@
+@import "../../../../scss/variables";
+
 .msg{
   text-align: center;
   font-size: 30px;
   color: red;
+  padding: 0 10vw 0 10vw;
+  @media (max-width: $breakpoint-small) {
+    padding: 0;
+  }
 }

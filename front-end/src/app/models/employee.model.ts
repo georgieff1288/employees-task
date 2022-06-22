@@ -6,5 +6,6 @@ export interface Employee {
   phone: string;
   city: string;
   street: string;
-  department: Department;
+  department_id: number;
+  department?: Department;
 }
