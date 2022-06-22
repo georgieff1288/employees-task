@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Employee } from "../models/employee.model";
-import { catchError, Observable, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 
 @Injectable({
@@ -8,6 +8,8 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 })
 export class EmployeesService {
   private endPoint = "http://localhost:3000/api/employees/";
+  numOfemplopyees = new BehaviorSubject<number>(0);
+  numOfemplopyeesObservable = this.numOfemplopyees.asObservable();
 
   constructor(private http: HttpClient) { }
 

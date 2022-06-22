@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { EmployeesService } from "../../services/employees.service";
-import {BehaviorSubject, Observable, Subscription} from "rxjs";
+import {BehaviorSubject, Subscription} from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.component";
 import { Employee } from "../../models/employee.model"
@@ -11,25 +11,25 @@ import { Employee } from "../../models/employee.model"
   styleUrls: ['./employees-list.component.scss']
 })
 export class EmployeesListComponent implements OnInit, OnDestroy {
-  // employees = new BehaviorSubject<Employee[]>([]);
-  // empObservable = this.employees.asObservable();
-  employees!: Observable<Employee[]>;
+  employees = new BehaviorSubject<Employee[]>([]);
   errorMsg: string = '';
   displayedColumns: string[] = ['name', 'department', 'phone', 'city', 'street', 'delete'];
   notificationMsg: string = '';
+  getSubscription!: Subscription;
   delSubscription!: Subscription;
   constructor(private emp: EmployeesService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.employees = this.emp.getAllEmployees();
-    this.employees.subscribe({
+    this.getSubscription = this.emp.getAllEmployees().subscribe({
       next: res => {
         if(res.length == 0){
           this.notificationMsg = 'There is no employees in database'
         }
+        this.employees.next(res);
+        this.emp.numOfemplopyees.next(res.length);
       },
       error: error => this.errorMsg = error
-    })
+    });
   }
   ngOnDestroy(): void {
     this.delSubscription?.unsubscribe();
@@ -49,7 +49,12 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
 
   delete(id: number): void {
     this.delSubscription = this.emp.deleteEmployee(id).subscribe({
+      next: ()=>{
+        let newEmployees = this.employees.value.filter(obj => obj.id != id);
+        this.employees.next(newEmployees);
+        this.emp.numOfemplopyees.next(newEmployees.length);
+      },
       error: error => this.errorMsg = error
-    })
+    });
   }
 }
