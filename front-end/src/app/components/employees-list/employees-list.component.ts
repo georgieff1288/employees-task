@@ -50,9 +50,16 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   delete(id: number): void {
     this.delSubscription = this.emp.deleteEmployee(id).subscribe({
       next: ()=>{
-        let newEmployees = this.employees.value.filter(obj => obj.id != id);
-        this.employees.next(newEmployees);
-        this.emp.numOfEmployees.next(newEmployees.length);
+        this.getSubscription = this.emp.getAllEmployees().subscribe({
+          next: res => {
+            if(res.length == 0){
+              this.notificationMsg = 'There is no employees in database'
+            }
+            this.employees.next(res);
+            this.emp.numOfEmployees.next(res.length);
+          },
+          error: error => this.errorMsg = error
+        })
       },
       error: error => this.errorMsg = error
     });

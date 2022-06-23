@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Employee } from "../models/employee.model";
 import {BehaviorSubject, catchError, Observable, throwError} from "rxjs";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { BaseService } from "./base.service";
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class EmployeesService {
   numOfEmployees = new BehaviorSubject<number>(0);
   numOfEmployeesObservable = this.numOfEmployees.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private baseService: BaseService) { }
 
   getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.endPoint, { withCredentials: true }).pipe(catchError(this.handleError));
