@@ -28,7 +28,7 @@ export class EmployeesController {
         return this.employeeService.getEmployeeById(params.id);
     }
 
-    @Put('edit/:id')
+    @Put(':id')
     editEmployee(@Body() addEmployee: AddEmployeeDto, @Param() params: FindOneParams): Promise<Employee> {
         return this.employeeService.editEmployee(addEmployee, params.id);
     }

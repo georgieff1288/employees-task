@@ -9,7 +9,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { EmployeesService } from "./services/employees.service";
+import { HttpService } from "./services/http.service";
 
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './components/employees/employees.component';
@@ -59,7 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule
   ],
   providers: [
-    EmployeesService,
+    HttpService,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     HttpClient
   ],
