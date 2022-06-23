@@ -1,14 +1,26 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EmployeesService } from "../../services/employees.service";
-import {BehaviorSubject, Subscription} from "rxjs";
+import { BehaviorSubject, Subscription } from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.component";
 import { Employee } from "../../models/employee.model"
+import { trigger, state, style, transition, animate } from "@angular/animations"
 
 @Component({
   selector: 'app-employees-list',
   templateUrl: './employees-list.component.html',
-  styleUrls: ['./employees-list.component.scss']
+  styleUrls: ['./employees-list.component.scss'],
+  animations:[
+    trigger("myAnimationTrigger", [
+      state('hidden', style({
+        transform: 'translateY(0%)'})
+      ), state('hidden', style({
+        transform: 'translateY(100%)', opacity: 0})
+      ), transition('hidden => shown', [
+        animate('0.5s')
+      ]),
+    ])
+  ]
 })
 export class EmployeesListComponent implements OnInit, OnDestroy {
   employees = new BehaviorSubject<Employee[]>([]);
@@ -17,6 +29,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   notificationMsg: string = '';
   getSubscription!: Subscription;
   delSubscription!: Subscription;
+  state = 'hidden';
   constructor(private emp: EmployeesService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -30,6 +43,10 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
       },
       error: error => this.errorMsg = error
     });
+
+    setTimeout( () => {
+      this.state = 'shown';
+    }, 200);
   }
   ngOnDestroy(): void {
     this.delSubscription?.unsubscribe();

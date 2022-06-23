@@ -55,7 +55,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     EmployeesService,
