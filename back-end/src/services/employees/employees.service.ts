@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Employee } from '../../models/employee/employee.entity'
 import { Department } from '../../models/department/department.entity'
-import {where} from "sequelize";
 
 @Injectable()
 export class EmployeesService {
@@ -46,5 +45,9 @@ export class EmployeesService {
 
     async  editEmployee(employee, id): Promise<any> {
         return this.employeesRepository.update(employee, {where: {id: id}});
+    }
+
+    async isEmployeeExist(id): Promise<number>{
+        return this.employeesRepository.count({where: {id: id}});
     }
 }

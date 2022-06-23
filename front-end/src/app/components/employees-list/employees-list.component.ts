@@ -38,6 +38,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   }
 
   openDialog(name: string, id: number): void {
+    this.errorMsg = '';
     let dialogRef = this.dialog.open(ConfirmModalComponent, {
       data:{text:`Would you like to delete ${name}?`},
       width: '250px'

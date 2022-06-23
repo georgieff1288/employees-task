@@ -1,4 +1,4 @@
-import {Controller, Get, Post, Delete, Put, Body, Param} from '@nestjs/common';
+import { Controller, Get, Post, Delete, Put, Body, Param } from '@nestjs/common';
 import { EmployeesService } from "../../services/employees/employees.service";
 import { Employee } from "../../models/employee/employee.entity";
 import { AddEmployeeDto } from "../../dtos/add-employee.dto";
@@ -8,6 +8,7 @@ import { FindOneParams } from "../../dtos/find-one-params";
 export class EmployeesController {
     constructor(private  readonly employeeService: EmployeesService) {
     }
+
     @Get()
     getAllEmployees(): Promise<Employee[]> {
         return this.employeeService.getAllEmployees();

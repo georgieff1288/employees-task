@@ -3,6 +3,7 @@ import { EmployeesController } from '../../controllers/employees/employees.contr
 import { EmployeesService } from '../../services/employees/employees.service';
 import { employeesProviders } from './employees.providers';
 import { DatabaseModule } from '../../database/dtabase.module';
+import { IsEmployeeExistDecorator } from "../../decorators/isEmployeeExist.decorator";
 
 @Module({
     imports: [DatabaseModule],
@@ -10,6 +11,7 @@ import { DatabaseModule } from '../../database/dtabase.module';
     providers: [
         EmployeesService,
         ...employeesProviders,
+        IsEmployeeExistDecorator,
     ],
 })
 export class EmployeesModule {}
