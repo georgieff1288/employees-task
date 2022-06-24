@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Subject, Subscription } from "rxjs";
 import { Employee } from "../../models/employee.model";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -21,12 +21,7 @@ export class EditEmployeeComponent implements OnInit {
     if(this.id){
       this.subscription = this.emp.getEmployeeById(this.id).subscribe({
         next: (res:Employee) => {
-          if(res){
-            this.employee.next(res);
-          }
-          else{
-            this.errorMsg = 'There is no such an employee'
-          }
+          this.employee.next(res);
         },
         error: error => this.errorMsg = error
       })
