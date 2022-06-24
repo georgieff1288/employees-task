@@ -1,8 +1,8 @@
 import { IsNumberString } from 'class-validator';
-import { IsEmployeeExist } from "../decorators/isEmployeeExist.factory";
+import { IsValueExist } from "../decorators/isValueExist.decorator";
 
 export class FindOneParams {
-    @IsEmployeeExist()
+    @IsValueExist('employees', 'id')
     @IsNumberString()
     id: number;
 }

@@ -3,7 +3,7 @@ import { EmployeesController } from '../../controllers/employees/employees.contr
 import { EmployeesService } from '../../services/employees/employees.service';
 import { employeesProviders } from './employees.providers';
 import { DatabaseModule } from '../../database/dtabase.module';
-import { IsEmployeeExistDecorator } from "../../decorators/isEmployeeExist.decorator";
+import { IsValueExistDecorator } from "../../decorators/isValueExist.decorator";
 
 @Module({
     imports: [DatabaseModule],
@@ -11,7 +11,7 @@ import { IsEmployeeExistDecorator } from "../../decorators/isEmployeeExist.decor
     providers: [
         EmployeesService,
         ...employeesProviders,
-        IsEmployeeExistDecorator,
+        IsValueExistDecorator,
     ],
 })
 export class EmployeesModule {}
