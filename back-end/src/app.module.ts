@@ -2,7 +2,9 @@ import { Module } from '@nestjs/common';
 import { EmployeesModule } from "./models/employee/employees.module";
 
 @Module({
-  imports: [EmployeesModule],
+  imports: [
+      EmployeesModule,
+  ],
   controllers: [ ],
   providers: [ ],
 })

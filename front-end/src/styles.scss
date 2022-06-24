@@ -15,6 +15,9 @@ body { margin: 0; }
   font-size: 25px;
   line-height: 30px;
   color: $primary-text-color;
+  @media (max-width: $breakpoint-small){
+    font-size: 20px;
+  }
 }
 
 .medium-text{
@@ -24,6 +27,9 @@ body { margin: 0; }
   font-size: 20px;
   line-height: 28px;
   color: $primary-text-color;
+  @media (max-width: $breakpoint-small){
+    font-size: 18px;
+  }
 }
 
 .small-text{
@@ -33,5 +39,8 @@ body { margin: 0; }
   font-size: 18px;
   line-height: 20px;
   color: $primary-text-color;
+  @media (max-width: $breakpoint-small){
+    font-size: 16px;
+  }
 }
 

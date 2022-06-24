@@ -51,15 +51,28 @@ table {
 
 .delete-btn{
   background: rgb(220, 164, 164);
-  margin-right: 10px;
+  @media (max-width: $breakpoint-small){
+    margin-bottom: 2px;
+  }
 }
 
 .edit-btn{
   background: rgb(102, 179, 255);
-  margin-left: 10px;
+  @media (max-width: $breakpoint-small){
+    margin-top: 2px;
+  }
+}
+
+.btn-col{
+  display: flex;
+  justify-content: space-around;
+  @media (max-width: $breakpoint-small){
+    flex-direction: column;
+  }
 }
 
 .msg{
   text-align: center;
   font-size: 30px;
 }
+

@@ -2,10 +2,15 @@
 
 .msg{
   text-align: center;
-  font-size: 30px;
   color: red;
   padding: 0 10vw 0 10vw;
   @media (max-width: $breakpoint-small) {
     padding: 0;
   }
 }
+
+.error-msg-container{
+  content: '';
+  height: 50px;
+}
+

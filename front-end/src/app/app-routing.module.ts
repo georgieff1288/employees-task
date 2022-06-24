@@ -5,9 +5,9 @@ import {AddEmployeeComponent} from "./components/add-employee/add-employee.compo
 import {EditEmployeeComponent} from "./components/edit-employee/edit-employee.component";
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: EmployeesListComponent },
-  { path: 'add-employee', component: AddEmployeeComponent },
-  { path: 'edit-employee/:id', component: EditEmployeeComponent },
+  { path: '', pathMatch: 'full', component: EmployeesListComponent, data: { animation: 'EmployeesListPage' } },
+  { path: 'add-employee', component: AddEmployeeComponent,data: { animation: 'AddEmployeePage' } },
+  { path: 'edit-employee/:id', component: EditEmployeeComponent, data: { animation: 'EditEmployeePage' } },
 ];
 
 @NgModule({
