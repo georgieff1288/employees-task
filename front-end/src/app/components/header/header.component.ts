@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {TranslateService} from "@ngx-translate/core";
+import { Component, OnInit } from '@angular/core';
+import { TranslateService } from "@ngx-translate/core";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private translateService: TranslateService) { }
+  constructor(private translateService: TranslateService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.translateService.setDefaultLang('en');
@@ -17,6 +18,6 @@ export class HeaderComponent implements OnInit {
     this.translateService.use(value.target.value);
   }
   logout(){
-    console.log('Logged out')
+    this.auth.logout();
   }
 }

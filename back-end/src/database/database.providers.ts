@@ -1,7 +1,9 @@
 import { Sequelize } from 'sequelize-typescript';
-import { Employee } from '../models/employee/employee.entity';
-import { Department } from '../models/department/department.entity';
-import { User } from "../models/auth/user.entity";
+import { Employee } from '../modules/employee/employee.entity';
+import { Department } from '../modules/department/department.entity';
+import { User } from "../modules/auth/user.entity";
+
+const { DB_PORT, DB_NAME } = require('../config')
 
 export const databaseProviders = [
     {
@@ -10,10 +12,10 @@ export const databaseProviders = [
             const sequelize = new Sequelize({
                 dialect: 'mysql',
                 host: 'localhost',
-                port: 3306,
+                port: DB_PORT,
                 username: 'root',
                 password: '',
-                database: 'employees_task',
+                database: DB_NAME,
                 define: {
                     timestamps: false
                 },

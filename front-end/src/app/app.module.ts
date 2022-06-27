@@ -40,7 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ErrorMessageComponent,
     EditEmployeeComponent,
     AddEmployeeComponent,
-    AuthComponent
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
