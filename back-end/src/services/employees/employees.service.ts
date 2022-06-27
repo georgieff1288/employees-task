@@ -11,7 +11,7 @@ export class EmployeesService {
     }
 
     async getAllEmployees(): Promise<Employee[]> {
-        return this.employeesRepository.findAll<Employee>({
+        return await this.employeesRepository.findAll<Employee>({
             include:[{
                 model: Department,
                 as: 'department'
@@ -20,11 +20,11 @@ export class EmployeesService {
     }
 
     async addEmployee(emp): Promise<Employee> {
-        return this.employeesRepository.create(emp);
+        return await this.employeesRepository.create(emp);
     }
 
     async deleteEmployee(id): Promise<number> {
-        return this.employeesRepository.destroy({
+        return await this.employeesRepository.destroy({
             where:{
                 id: id
             }
@@ -32,7 +32,7 @@ export class EmployeesService {
     }
 
     async getEmployeeById(id): Promise<Employee> {
-        return  this.employeesRepository.findOne({
+        return  await this.employeesRepository.findOne({
             where:{
                 id: id
             },
@@ -44,6 +44,6 @@ export class EmployeesService {
     }
 
     async  editEmployee(employee, id): Promise<any> {
-        return this.employeesRepository.update(employee, {where: {id: id}});
+        return await this.employeesRepository.update(employee, {where: {id: id}});
     }
 }

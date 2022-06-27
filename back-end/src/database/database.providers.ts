@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Employee } from '../models/employee/employee.entity';
 import { Department } from '../models/department/department.entity';
+import { User } from "../models/auth/user.entity";
 
 export const databaseProviders = [
     {
@@ -17,7 +18,7 @@ export const databaseProviders = [
                     timestamps: false
                 },
             });
-            sequelize.addModels([Employee, Department]);
+            sequelize.addModels([Employee, Department, User]);
 
             Department.hasMany(Employee, {
                 foreignKey: 'department_id',
@@ -26,7 +27,7 @@ export const databaseProviders = [
             Employee.belongsTo(Department, {
                 foreignKey: 'department_id',
                 as: 'department'
-            })
+            });
             await sequelize.sync();
             return sequelize;
         },
