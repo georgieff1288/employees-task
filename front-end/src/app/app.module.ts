@@ -21,6 +21,7 @@ import { ConfirmModalComponent } from './components/shared/confirm-modal/confirm
 import { ErrorMessageComponent } from './components/shared/error-message/error-message.component';
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { AuthComponent } from './components/auth/auth.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,7 +39,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConfirmModalComponent,
     ErrorMessageComponent,
     EditEmployeeComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

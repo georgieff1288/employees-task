@@ -21,5 +21,13 @@
   "TThere is no employees in database": "TThere is no employees in database",
   "Edit": "Edit",
   "Add new employee": "Add new employee",
-  "Edit employee": "Edit employee"
+  "Edit employee": "Edit employee",
+  "Login": "Login",
+  "Logout": "Logout",
+  "Email": "Email",
+  "Password": "Password",
+  "Email is required": "Email is required",
+  "Password is required": "Password is required",
+  "Enter a valid email": "Enter a valid email",
+  "Password must be at least 6 symbols": "Password must be at least 6 symbols"
 }

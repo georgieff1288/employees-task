@@ -1,6 +1,8 @@
 <div class="header-container">
-  <a class="large-text"  routerLink="/">{{'Employees' | translate}}</a>
-  <a class="large-text"  routerLink="/add-employee">{{'Add employee' | translate}}</a>
+  <a class="medium-text"  routerLink="/">{{'Employees' | translate}}</a>
+  <a class="medium-text"  routerLink="/add-employee">{{'Add employee' | translate}}</a>
+  <a class="medium-text"  routerLink="/login">{{'Login' | translate}}</a>
+  <a class="medium-text"  (click)="logout()">{{'Logout' | translate}}</a>
   <select class="small-text" (change)="onChange($event)" >
     <option value="en">En</option>
     <option value="bg">Bg</option>

@@ -1,0 +1,28 @@
+<p class="medium-text title">{{'Login' | translate}}</p>
+<div class="form-container">
+  <form [formGroup]="authForm" (ngSubmit)="submit()">
+      <div class="input-div">
+        <div class="row">
+          <label class="small-text" for="email">{{'Email' | translate}}: </label><br>
+          <span *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+            <span class="small-text" *ngIf="email?.errors?.['required']"> {{'Email is required' | translate}}.</span>
+            <span class="small-text" *ngIf="email?.errors?.['email']"> {{'Enter a valid email' | translate}}.</span>
+          </span>
+        </div>
+        <input class="" id="email" type="text" formControlName="email">
+      </div>
+      <div class="input-div">
+        <div class="row">
+          <label class="small-text" for="password">{{'Password' | translate}}: </label><br>
+          <span *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+            <span class="small-text" *ngIf="password?.errors?.['required']"> {{'Password is required' | translate}}.</span>
+            <span class="small-text" *ngIf="password?.errors?.['minLength']"> {{'Password must be at least 6 symbols' | translate}}.</span>
+          </span>
+        </div>
+        <input class="" id="password" type="password" formControlName="password">
+      </div>
+    <div class="btn-div">
+      <button class="btn" type="submit" id="btn-login" [disabled]="!authForm.valid">{{'Submit' | translate}}</button>
+    </div>
+  </form>
+</div>

@@ -27,7 +27,7 @@ export const slideInAnimation =
     ]),
   ]);
 
-export const fadeAnimations =
+export const fadeAnimation =
   trigger('routeAnimations', [
     transition('* <=> *', [
       // Set a default  style for enter and leave

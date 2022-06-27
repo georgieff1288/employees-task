@@ -1,8 +1,12 @@
-@import "../../../../scss/variables";
+@import "../../../scss/variables";
 
 .form-container{
   display: flex;
   justify-content: center;
+}
+
+.title{
+  text-align: center;
 }
 
 .row{
@@ -12,17 +16,16 @@
   }
 }
 
-.col{
-  margin-left: 1vw;
-  margin-right: 1vw;
+form{
+  display: flex;
+  flex-direction: column;
+}
+.input-div{
+  margin: 0 1vw 0 1vw;
 }
 
 span{
   color: red;
-}
-
-label{
-  color: $secondary-text-color;
 }
 
 input{
@@ -36,29 +39,10 @@ input{
     width: 80vw;
   }
 }
-.select-div{
-  display: flex;
-  justify-content: center;
-  margin: 20px 0 20px 0;
-}
-
-select{
-  background:$input-background;
-  height: 38px;
-  width: 40%;
-  border-radius: 5px;
-  @media (max-width: $breakpoint-small) {
-    width: 100%;
-  }
-}
 
 .btn-div{
   display: flex;
   justify-content: center;
-}
-
-#form-btn:disabled{
-  background-color: rgb(220, 164, 164);
 }
 
 .btn{
@@ -75,4 +59,8 @@ select{
   @media (max-width: $breakpoint-large) {
     width: 40vw;
   }
+}
+
+#btn-login:disabled{
+  background-color: rgb(220, 164, 164);
 }

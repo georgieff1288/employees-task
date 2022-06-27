@@ -21,5 +21,13 @@
   "There is no employees in database": "В базата данни няма служители",
   "Edit": "Редактирай",
   "Add new employee": "Добави нов служител",
-  "Edit employee": "Редактирай служителя"
+  "Edit employee": "Редактирай служителя",
+  "Login": "Логин",
+  "Logout": "Излез",
+  "Email": "Поща",
+  "Password": "Парола",
+  "Email is required": "Въведете поща",
+  "Password is required": "Въведете парола",
+  "Enter a valid email": "Въведете валидна поща",
+  "Password must be at least 6 symbols": "Паролата трябва да е поне от 6 символа"
 }
