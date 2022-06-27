@@ -9,7 +9,7 @@ export class AuthService {
     ) {
     }
 
-    async login(email): Promise<User> {
+    async getUser(email): Promise<User> {
         return await this.authRepository.findOne({where:{email: email}});
     }
 }

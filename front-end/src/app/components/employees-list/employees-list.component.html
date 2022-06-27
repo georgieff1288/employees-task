@@ -2,7 +2,7 @@
 
 <app-error-message [errorMsg]="errorMsg"></app-error-message>
 
-<div class="table-container" *ngIf="!notificationMsg">
+<div class="table-container" *ngIf="employees.value.length > 0">
   <table mat-table [dataSource]="employees">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef class="medium-text"> {{'Name' | translate}} </th>

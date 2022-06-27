@@ -5,7 +5,7 @@ import { Response } from "express";
 import { JwtService } from "../../services/jwt/jwt.service";
 
 const bcrypt = require('bcrypt');
-const { COOKIE_NAME } = require('../../config');
+const { TOKEN_COOKIE_NAME, REFRESH_TOKEN_COOKIE_NAME } = require('../../config');
 
 @Controller('api/auth/')
 export class AuthController {
@@ -16,7 +16,7 @@ export class AuthController {
     @Post('login')
     async login(@Body() user: UserLoginDto, @Res() res: Response ): Promise<any> {
         let dbUser;
-        await this.authService.login(user.email)
+        await this.authService.getUser(user.email)
             .then(res => dbUser = res)
             .catch( err => {return err})
         if(dbUser == null){
@@ -31,8 +31,9 @@ export class AuthController {
                 message: 'Invalid credentials'
             });
         }
-        let token = this.jwtService.createToken(dbUser.email);
-        res.cookie(COOKIE_NAME, token)
+        let tokens = this.jwtService.createToken(dbUser.email);
+        res.cookie(TOKEN_COOKIE_NAME, tokens[0]);
+        res.cookie(REFRESH_TOKEN_COOKIE_NAME, tokens[1]);
         return res.status(HttpStatus.OK).json({
             statusCode: 200,
             message: 'Login success',
