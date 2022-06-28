@@ -19,6 +19,12 @@ export class AuthService {
 
   logout(): void {
     this.cookies.delete('jwt');
+    this.cookies.delete('refresh-jwt');
     this.router.navigate(['login'])
+  }
+
+  getToken(): string {
+    let token = this.cookies.get('jwt')
+    return token;
   }
 }

@@ -11,8 +11,8 @@ import { Router } from "@angular/router";
 })
 export class AuthComponent implements OnInit, OnDestroy {
   authForm = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)])
+    email: new FormControl('admin@abv.bg', [Validators.email, Validators.required]),
+    password: new FormControl('123456', [Validators.required, Validators.minLength(6)])
   });
   errorMsg: string = '';
   subscription!: Subscription;
@@ -36,7 +36,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       password: this.authForm.value.password!
     }
     this.subscription = this.auth.login(user).subscribe({
-      next: res => this.router.navigate(['/']),
+      next: () => this.router.navigate(['/']),
       error: err => this.errorMsg = err
     })
   }

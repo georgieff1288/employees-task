@@ -31,7 +31,7 @@ export class AuthController {
                 message: 'Invalid credentials'
             });
         }
-        let tokens = this.jwtService.createToken(dbUser.email);
+        let tokens = this.jwtService.createTokens(dbUser.email);
         res.cookie(TOKEN_COOKIE_NAME, tokens[0]);
         res.cookie(REFRESH_TOKEN_COOKIE_NAME, tokens[1]);
         return res.status(HttpStatus.OK).json({
