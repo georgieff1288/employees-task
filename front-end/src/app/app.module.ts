@@ -12,6 +12,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpService } from "./services/http.service";
 
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
+import { TokenInterceptor } from "./interceptors/token.interceptor";
 
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './components/employees/employees.component';
@@ -24,6 +25,7 @@ import { ErrorMessageComponent } from './components/shared/error-message/error-m
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { AuthComponent } from './components/auth/auth.component';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -66,7 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpService,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
     HttpClient,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

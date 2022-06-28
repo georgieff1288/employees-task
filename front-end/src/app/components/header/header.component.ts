@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   onChange(value: any) {
     this.translateService.use(value.target.value);
   }
-  logout(){
+  logout(): void {
     this.auth.logout();
   }
 }

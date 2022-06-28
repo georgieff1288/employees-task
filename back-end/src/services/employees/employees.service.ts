@@ -43,7 +43,7 @@ export class EmployeesService {
         })
     }
 
-    async  editEmployee(employee, id): Promise<any> {
+    async editEmployee(employee, id): Promise<any> {
         return await this.employeesRepository.update(employee, {where: {id: id}});
     }
 }

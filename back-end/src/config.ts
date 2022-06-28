@@ -8,7 +8,7 @@ const config = {
     REFRESH_TOKEN_SECRET: 'refresh-token-super-secret',
     TOKEN_COOKIE_NAME: 'jwt',
     REFRESH_TOKEN_COOKIE_NAME: 'refresh-jwt',
-    TOKEN_LIFE: '15m',
+    TOKEN_LIFE: '5000',
     REFRESH_TOKEN_LIFE:'30d'
 }
 
