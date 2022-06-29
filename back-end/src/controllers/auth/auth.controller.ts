@@ -67,7 +67,8 @@ export class AuthController {
         res.cookie(TOKEN_COOKIE_NAME, newToken);
         return res.status(HttpStatus.OK).json({
             statusCode: 200,
-            message: 'Created new access token'
+            message: 'Created new access token',
+            token: newToken
         });
     }
 }
