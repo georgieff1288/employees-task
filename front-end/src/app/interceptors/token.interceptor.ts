@@ -3,9 +3,9 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
-import {catchError, Observable} from 'rxjs';
+import {catchError, firstValueFrom, from, Observable} from 'rxjs';
 import {AuthService} from "../services/auth.service";
 
 @Injectable()
@@ -14,15 +14,18 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let req = request.clone();
+    let isLoggedIn = this.authService.isLoggedIn;
     return next.handle(request).pipe(catchError(err => {
-      if(err.status == 403 || err.status == 401){
-        this.authService.getNewToken().then((res) => {
-          console.log(res)
-        });
-        return next.handle(req);
+      if(isLoggedIn){
+        if(err.status == 403 || err.status == 401){
+          from(this.handleError(request, next))
+        }
       }
-      return next.handle(req);
+      return next.handle(request);
     }))
+  }
+  async handleError(request: HttpRequest<any>, next: HttpHandler){
+    await this.authService.getNewToken();
+    return firstValueFrom(next.handle(request));
   }
 }

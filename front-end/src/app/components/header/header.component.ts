@@ -9,7 +9,7 @@ import { AuthService } from "../../services/auth.service";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private translateService: TranslateService, private auth: AuthService) { }
+  constructor(private translateService: TranslateService, public auth: AuthService) { }
 
   ngOnInit(): void {
     this.translateService.setDefaultLang('en');

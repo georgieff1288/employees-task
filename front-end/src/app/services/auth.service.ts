@@ -27,8 +27,18 @@ export class AuthService {
     return  this.cookies.get('jwt');
   }
 
-  async getNewToken(): Promise<any> {
+  get isLoggedIn(): boolean {
+    let token = this.cookies.get('refresh-jwt');
+    if(!token){
+      return false
+    }
+    let expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+    let isExpired = (Math.floor((new Date).getTime() / 1000)) >= expiry;
+    return !isExpired
+  }
+
+  getNewToken(): Promise<any> {
     let url = this.baseUrl + 'token';
-    return await firstValueFrom(this.httpService.get(url));
+    return firstValueFrom(this.httpService.get(url));
   }
 }
