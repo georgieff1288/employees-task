@@ -3,6 +3,8 @@ import { EmployeesService } from "../../services/employees.service";
 import { Router } from "@angular/router";
 import { Employee } from "../../models/employee.model";
 import { Subscription } from "rxjs";
+import {addEmployee} from "../../state/employees.actions";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-add-employee',
@@ -12,7 +14,7 @@ import { Subscription } from "rxjs";
 export class AddEmployeeComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   errorMsg: string = '';
-  constructor(private emp:EmployeesService, private router:Router) { }
+  constructor(private emp:EmployeesService, private router:Router, private store: Store) { }
 
   ngOnInit(): void {
   }
@@ -23,9 +25,10 @@ export class AddEmployeeComponent implements OnInit, OnDestroy {
   }
 
   addEmployee (employee: Employee) {
-    this.subscription = this.emp.addEmployee(employee).subscribe({
-      next: () => this.router.navigate(['/']),
-      error: error => this.errorMsg = error
-    });
+    this.store.dispatch(addEmployee({ employee }));
+    // this.subscription = this.emp.addEmployee(employee).subscribe({
+    //   next: () => this.router.navigate(['/']),
+    //   error: error => this.errorMsg = error
+    // });
   }
 }

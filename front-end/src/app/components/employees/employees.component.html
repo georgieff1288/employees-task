@@ -1,7 +1,7 @@
 <div class="employees-container">
   <app-header></app-header>
   <div class="child-container">
-    <app-employees-info class="info"></app-employees-info>
+    <app-employees-info *ngIf="atuhService.isLoggedIn" class="info"></app-employees-info>
 <!--    <div [@routeAnimations]="getRouteAnimationData()">-->
       <router-outlet></router-outlet>
 <!--    </div>-->

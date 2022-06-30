@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit } from '@angular/core';
 import { EmployeesService } from "../../services/employees.service";
-import { BehaviorSubject, Subscription } from "rxjs";
+import {BehaviorSubject, Subscription} from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.component";
 import { Employee } from "../../models/employee.model"
+import {Store} from "@ngrx/store";
 
 
 @Component({
@@ -19,19 +20,23 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   getSubscription!: Subscription;
   delSubscription!: Subscription;
 
-  constructor(private emp: EmployeesService, public dialog: MatDialog) { }
+  storeEmployees$ = this.store.select('employees');
+
+  constructor(private emp: EmployeesService, public dialog: MatDialog, private store: Store<{employees: Employee[]}>) {
+    this.store.dispatch({ type: '[Employees List] Load Employees' });
+  }
 
   ngOnInit(): void {
-    this.getSubscription = this.emp.getAllEmployees().subscribe({
-      next: res => {
-        if(res.length == 0){
-          this.notificationMsg = 'There is no employees in database'
-        }
-        this.employees.next(res);
-        this.emp.numOfEmployees.next(res.length);
-      },
-      error: error => this.errorMsg = error
-    });
+    // this.getSubscription = this.emp.getAllEmployees().subscribe({
+    //   next: (res: Employee[]) => {
+    //     if(res.length == 0){
+    //       this.notificationMsg = 'There is no employees in database'
+    //     }
+    //     this.employees.next(res);
+    //     this.emp.numOfEmployees.next(res.length);
+    //   },
+    //   error: error => this.errorMsg = error
+    // });
   }
   ngOnDestroy(): void {
     this.delSubscription?.unsubscribe();

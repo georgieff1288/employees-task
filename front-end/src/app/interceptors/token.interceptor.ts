@@ -22,7 +22,6 @@ export class TokenInterceptor implements HttpInterceptor {
           switchMap(() => {
             return next.handle(request);
           }), catchError((err) => {
-            this.authService.logout();
             return throwError(err);
           })
         )

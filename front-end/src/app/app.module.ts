@@ -8,6 +8,11 @@ import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/d
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { employeesReducer } from './state/employees.reducer'
+import { EmployeesEffects } from "./state/employees.effects";
 
 import { HttpService } from "./services/http.service";
 
@@ -25,6 +30,8 @@ import { ErrorMessageComponent } from './components/shared/error-message/error-m
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { AuthComponent } from './components/auth/auth.component';
+
+
 
 
 
@@ -62,7 +69,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({employees: employeesReducer}, {}),
+    EffectsModule.forRoot([EmployeesEffects])
   ],
   providers: [
     HttpService,

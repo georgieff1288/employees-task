@@ -19,6 +19,7 @@ export class EmployeesService {
   }
 
   addEmployee(employee: Employee): Observable<Employee> {
+    console.log(employee)
     return this.httpService.post(this.baseUrl, employee);
   }
 

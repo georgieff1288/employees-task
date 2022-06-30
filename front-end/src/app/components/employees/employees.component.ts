@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChildrenOutletContexts } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
+// import { ChildrenOutletContexts } from "@angular/router";
 // import { slideInAnimation } from "../../animations";
 
 @Component({
@@ -9,12 +10,14 @@ import { ChildrenOutletContexts } from "@angular/router";
   // animations: [slideInAnimation]
 })
 export class EmployeesComponent implements OnInit {
-  constructor(private contexts: ChildrenOutletContexts) { }
+
+  // private contexts: ChildrenOutletContexts
+  constructor(public atuhService: AuthService) { }
 
   ngOnInit(): void {
 
   }
-  getRouteAnimationData() {
-    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
-  }
+  // getRouteAnimationData() {
+  //   return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
+  // }
 }

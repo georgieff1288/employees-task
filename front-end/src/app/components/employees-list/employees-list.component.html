@@ -1,9 +1,9 @@
 <p class="large-text msg" *ngIf="notificationMsg">{{notificationMsg | translate}}.</p>
 
 <app-error-message [errorMsg]="errorMsg"></app-error-message>
-
-<div class="table-container" *ngIf="employees.value.length > 0">
-  <table mat-table [dataSource]="employees">
+<!--*ngIf="employees.value.length > 0"-->
+<div class="table-container" *ngIf="(storeEmployees$ | async)?.length">
+  <table mat-table [dataSource]="storeEmployees$">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef class="medium-text"> {{'Name' | translate}} </th>
       <td mat-cell *matCellDef="let employee" class="small-text"> {{employee.employee_name}} </td>
