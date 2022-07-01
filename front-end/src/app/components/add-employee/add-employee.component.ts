@@ -25,7 +25,7 @@ export class AddEmployeeComponent implements OnInit, OnDestroy {
   }
 
   addEmployee (employee: Employee) {
-    this.store.dispatch(addEmployee({ employee }));
+    this.store.dispatch(addEmployee({ employee  }));
     // this.subscription = this.emp.addEmployee(employee).subscribe({
     //   next: () => this.router.navigate(['/']),
     //   error: error => this.errorMsg = error

@@ -10,6 +10,8 @@
 }
 
 .error-msg-container{
+  display: flex;
+  justify-content: center;
   content: '';
   height: 50px;
 }

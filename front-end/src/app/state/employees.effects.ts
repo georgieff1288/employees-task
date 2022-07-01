@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import {EmployeesService} from "../services/employees.service";
+import {Employee} from "../models/employee.model";
 
 @Injectable()
 export class EmployeesEffects {
@@ -20,7 +21,7 @@ export class EmployeesEffects {
 
   addEmployee$ = createEffect(() => this.actions$.pipe(
       ofType('[Add Employee] Add Employee'),
-      mergeMap(employee => this.emp.addEmployee(employee)
+      mergeMap((employee:Employee) => this.emp.addEmployee(employee)
         .pipe(
           map(() => ({ type: '[Employees List] Load Employees'})),
           catchError(() => EMPTY)

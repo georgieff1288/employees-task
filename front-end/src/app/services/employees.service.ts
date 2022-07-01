@@ -18,9 +18,8 @@ export class EmployeesService {
     return this.httpService.get(this.baseUrl);
   }
 
-  addEmployee(employee: Employee): Observable<Employee> {
-    console.log(employee)
-    return this.httpService.post(this.baseUrl, employee);
+  addEmployee(employee: any): Observable<Employee> {
+    return this.httpService.post(this.baseUrl, employee.employee);
   }
 
   deleteEmployee(id: number): Observable<Employee> {
