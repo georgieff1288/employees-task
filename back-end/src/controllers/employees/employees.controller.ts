@@ -5,7 +5,6 @@ import { AddEmployeeDto } from "../../dtos/add-employee.dto";
 import { FindOneParams } from "../../dtos/find-one-params";
 import { AuthGuard } from "../../guards/auth.guard";
 
-import { Request } from 'express';
 
 @Controller('api/employees/')
 @UseGuards(AuthGuard)
@@ -21,6 +20,12 @@ export class EmployeesController {
     @Post()
     addEmployee(@Body() employee: AddEmployeeDto): Promise<Employee> {
         return this.employeeService.addEmployee(employee);
+    }
+
+    @Get('cities')
+    getCities(){
+        console.log('here')
+        return this.employeeService.getCities();
     }
 
     @Delete(':id')

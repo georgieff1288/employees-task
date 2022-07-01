@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -30,6 +31,7 @@ import { ErrorMessageComponent } from './components/shared/error-message/error-m
 import { EditEmployeeComponent } from './components/edit-employee/edit-employee.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { FiltersComponent } from './components/filters/filters.component';
 
 
 
@@ -52,6 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditEmployeeComponent,
     AddEmployeeComponent,
     AuthComponent,
+    FiltersComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     MatTableModule,
     MatDialogModule,
+    MatSelectModule,
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({

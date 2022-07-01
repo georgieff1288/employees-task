@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Employee } from '../../modules/employee/employee.entity'
 import { Department } from '../../modules/department/department.entity'
+import { Sequelize } from 'sequelize-typescript';
 
 @Injectable()
 export class EmployeesService {
@@ -45,5 +46,9 @@ export class EmployeesService {
 
     async editEmployee(employee, id): Promise<any> {
         return await this.employeesRepository.update(employee, {where: {id: id}});
+    }
+
+    async getCities(): Promise<Employee[]>{
+        return await this.employeesRepository.findAll({attributes:[ [Sequelize.fn('DISTINCT', Sequelize.col('city')) ,'name']]});
     }
 }

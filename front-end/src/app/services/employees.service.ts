@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Employee } from "../models/employee.model";
 import { BehaviorSubject, Observable } from "rxjs";
 import { HttpService } from "./http.service";
+import {Department} from "../models/department.model";
+import { City } from '../models/city.model';
 
 
 @Injectable({
@@ -22,8 +24,8 @@ export class EmployeesService {
     return this.httpService.post(this.baseUrl, employee.employee);
   }
 
-  deleteEmployee(id: number): Observable<Employee> {
-    let url = this.baseUrl + id;
+  deleteEmployee(obj: any): Observable<Employee> {
+    let url = this.baseUrl + obj.id;
     return this.httpService.delete(url);
   }
   getEmployeeById(id: number): Observable<Employee> {
@@ -34,5 +36,13 @@ export class EmployeesService {
   editEmployee(employee: Employee, id: number): Observable<Employee> {
     let url = this.baseUrl + id;
     return this.httpService.put(url, employee);
+  }
+
+  getDepartments(): Observable<Department[]>{
+    return this.httpService.get('departments');
+  }
+  getCities(): Observable<City[]>{
+    let url = this.baseUrl + 'cities';
+    return this.httpService.get(url);
   }
 }

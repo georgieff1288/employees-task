@@ -29,5 +29,8 @@
   "Email is required": "Email is required",
   "Password is required": "Password is required",
   "Enter a valid email": "Enter a valid email",
-  "Password must be at least 6 symbols": "Password must be at least 6 symbols"
+  "Password must be at least 6 symbols": "Password must be at least 6 symbols",
+  "Filter": "Filter",
+  "All departments": "All departments",
+  "ALl cities": "ALl cities"
 }

@@ -8,6 +8,9 @@ import {Employee} from "../models/employee.model";
 @Injectable()
 export class EmployeesEffects {
 
+  constructor(private actions$: Actions, private emp: EmployeesService)
+  {}
+
   loadEmployees$ = createEffect(() => this.actions$.pipe(
       ofType('[Employees List] Load Employees'),
       mergeMap(() => this.emp.getAllEmployees()
@@ -30,6 +33,15 @@ export class EmployeesEffects {
     )
   );
 
-  constructor(private actions$: Actions, private emp: EmployeesService)
-  {}
+  deleteEmployee$ = createEffect(() => this.actions$.pipe(
+      ofType('[Employees List] Delete Employee'),
+      mergeMap((id:number) => this.emp.deleteEmployee(id)
+        .pipe(
+          map(() => ({ type: '[Employees List] Load Employees'})),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
 }

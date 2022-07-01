@@ -1,6 +1,7 @@
 <p class="large-text msg" *ngIf="notificationMsg">{{notificationMsg | translate}}.</p>
 
 <app-error-message [errorMsg]="errorMsg"></app-error-message>
+<app-filters></app-filters>
 <!--*ngIf="employees.value.length > 0"-->
 <div class="table-container" *ngIf="(storeEmployees$ | async)?.length">
   <table mat-table [dataSource]="storeEmployees$">

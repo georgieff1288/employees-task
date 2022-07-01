@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.component";
 import { Employee } from "../../models/employee.model"
 import {Store} from "@ngrx/store";
+import {deleteEmployee} from "../../state/employees.actions";
 
 
 @Component({
@@ -56,20 +57,21 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   }
 
   delete(id: number): void {
-    this.delSubscription = this.emp.deleteEmployee(id).subscribe({
-      next: ()=>{
-        this.getSubscription = this.emp.getAllEmployees().subscribe({
-          next: res => {
-            if(res.length == 0){
-              this.notificationMsg = 'There is no employees in database'
-            }
-            this.employees.next(res);
-            this.emp.numOfEmployees.next(res.length);
-          },
-          error: error => this.errorMsg = error
-        })
-      },
-      error: error => this.errorMsg = error
-    });
+    this.store.dispatch(deleteEmployee({ id }));
+    // this.delSubscription = this.emp.deleteEmployee(id).subscribe({
+    //   next: ()=>{
+    //     this.getSubscription = this.emp.getAllEmployees().subscribe({
+    //       next: res => {
+    //         if(res.length == 0){
+    //           this.notificationMsg = 'There is no employees in database'
+    //         }
+    //         this.employees.next(res);
+    //         this.emp.numOfEmployees.next(res.length);
+    //       },
+    //       error: error => this.errorMsg = error
+    //     })
+    //   },
+    //   error: error => this.errorMsg = error
+    // });
   }
 }

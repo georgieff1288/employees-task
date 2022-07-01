@@ -5,13 +5,16 @@ import { employeesProviders } from './employees.providers';
 import { DatabaseModule } from '../../database/dtabase.module';
 import { IsValueExistDecorator } from "../../decorators/isValueExist.decorator";
 import { JwtService } from "../../services/jwt/jwt.service";
-import {AuthService} from "../../services/auth/auth.service";
-import {authProviders} from "../auth/auth.providers";
+import { AuthService } from "../../services/auth/auth.service";
+import { authProviders } from "../auth/auth.providers";
+
 
 
 
 @Module({
-    imports: [DatabaseModule],
+    imports: [
+        DatabaseModule,
+    ],
     controllers: [EmployeesController],
     providers: [
         EmployeesService,
@@ -19,7 +22,7 @@ import {authProviders} from "../auth/auth.providers";
         IsValueExistDecorator,
         JwtService,
         AuthService,
-        ...authProviders
+        ...authProviders,
     ],
 })
 export class EmployeesModule {}

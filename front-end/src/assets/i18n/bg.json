@@ -29,5 +29,8 @@
   "Email is required": "Въведете поща",
   "Password is required": "Въведете парола",
   "Enter a valid email": "Въведете валидна поща",
-  "Password must be at least 6 symbols": "Паролата трябва да е поне от 6 символа"
+  "Password must be at least 6 symbols": "Паролата трябва да е поне от 6 символа",
+  "Filter": "Филтрирай",
+  "All departments": "Всички отдели",
+  "All cities": "Всички градове"
 }
