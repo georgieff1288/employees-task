@@ -1,1 +1,1 @@
-<p class="small-text"*ngIf="employeesCounter > 0">{{'Number of employees' | translate}}: {{employeesCounter}}</p>
+<p class="small-text"*ngIf="(employeesCounter | async)?.length">{{'Number of employees' | translate}}: {{(employeesCounter | async)?.length}}</p>
