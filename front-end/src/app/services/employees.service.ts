@@ -16,7 +16,7 @@ export class EmployeesService {
 
   constructor(private httpService: HttpService) { }
 
-  getAllEmployees(): Observable<Employee[]> {
+  getAllEmployees(filters?: {}): Observable<Employee[]> {
     return this.httpService.get(this.baseUrl);
   }
 

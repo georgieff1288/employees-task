@@ -6,6 +6,7 @@ import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.com
 import { Employee } from "../../models/employee.model"
 import {Store} from "@ngrx/store";
 import {deleteEmployee} from "../../state/employees.actions";
+import { selectEmployeesList } from "../../state/employees.selectors";
 
 
 @Component({
@@ -21,9 +22,9 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   getSubscription!: Subscription;
   delSubscription!: Subscription;
 
-  storeEmployees$ = this.store.select('employees');
+  storeEmployees$ = this.store.select(selectEmployeesList);
 
-  constructor(private emp: EmployeesService, public dialog: MatDialog, private store: Store<{employees: Employee[]}>) {
+  constructor(private emp: EmployeesService, public dialog: MatDialog, private store: Store) {
     this.store.dispatch({ type: '[Employees List] Load Employees' });
   }
 

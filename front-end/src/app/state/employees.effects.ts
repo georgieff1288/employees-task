@@ -22,6 +22,29 @@ export class EmployeesEffects {
     )
   );
 
+  loadCities$ = createEffect(() => this.actions$.pipe(
+      ofType('[Filters] Load Cities'),
+      mergeMap(() => this.emp.getCities()
+        .pipe(
+          map(cities => ({ type: '[Cities API] Cities Loaded Success', cities })),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
+  loadDepartments$ = createEffect(() => this.actions$.pipe(
+      ofType('[Filters] Load Departments'),
+      mergeMap(() => this.emp.getDepartments()
+        .pipe(
+          map(departments => ({ type: '[Departments API] Departments Loaded Success', departments })),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
+
   addEmployee$ = createEffect(() => this.actions$.pipe(
       ofType('[Add Employee] Add Employee'),
       mergeMap((employee:Employee) => this.emp.addEmployee(employee)
@@ -36,6 +59,17 @@ export class EmployeesEffects {
   deleteEmployee$ = createEffect(() => this.actions$.pipe(
       ofType('[Employees List] Delete Employee'),
       mergeMap((id:number) => this.emp.deleteEmployee(id)
+        .pipe(
+          map(() => ({ type: '[Employees List] Load Employees'})),
+          catchError(() => EMPTY)
+        )
+      )
+    )
+  );
+
+  filterEmployee$ = createEffect(() => this.actions$.pipe(
+      ofType('[Employees List] Filter Employees List'),
+      mergeMap((filters:{}) => this.emp.getAllEmployees(filters)
         .pipe(
           map(() => ({ type: '[Employees List] Load Employees'})),
           catchError(() => EMPTY)

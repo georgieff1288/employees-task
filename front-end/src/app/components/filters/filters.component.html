@@ -5,8 +5,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Filter by department</mat-label>
       <mat-select formControlName="departmentId">
-        <mat-option value="0">All</mat-option>
-        <mat-option *ngFor="let department of departments" [value]="department.department_id">
+        <mat-option value=''>All</mat-option>
+        <mat-option *ngFor="let department of departments$ | async" [value]="department.department_id">
           {{department.department_name}}
         </mat-option>
       </mat-select>
@@ -15,8 +15,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Filter by city</mat-label>
       <mat-select formControlName="city">
-        <mat-option value="0">All</mat-option>
-        <mat-option *ngFor="let city of cities" [value]="city.name">
+        <mat-option value=''>All</mat-option>
+        <mat-option *ngFor="let city of cities$ | async" [value]="city.name">
           {{city.name}}
         </mat-option>
       </mat-select>
