@@ -31,6 +31,8 @@
   "Enter a valid email": "Въведете валидна поща",
   "Password must be at least 6 symbols": "Паролата трябва да е поне от 6 символа",
   "Filter": "Филтрирай",
-  "All departments": "Всички отдели",
-  "All cities": "Всички градове"
+  "All": "Всички",
+  "Filter by department": "Филтрирай по отдел",
+  "Filter by city": "Филтрирай по град",
+  "There is no employees": "Няма служители"
 }

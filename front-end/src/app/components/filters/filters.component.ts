@@ -42,9 +42,13 @@ export class FiltersComponent implements OnInit, OnDestroy {
     // }
   }
   filter(){
-    if(!!this.filterForm.value.city && !!this.filterForm.value.departmentId){
-      let filters = this.filterForm.value;
-      this.store.dispatch(filterEmployees({ filters }));
+    if(!this.filterForm.value.city && !this.filterForm.value.departmentId){
+      return;
     }
+    let filters ={
+      departmentId:  this.filterForm.value.departmentId,
+      city:  this.filterForm.value.city
+    };
+    this.store.dispatch(filterEmployees({ filters }));
   }
 }

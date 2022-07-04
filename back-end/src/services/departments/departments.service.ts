@@ -10,7 +10,6 @@ export class DepartmentsService {
     }
 
     async getDepartments(): Promise<any> {
-        console.log('here')
-        return await this.departmentsRepository.findAll();
+        return await this.departmentsRepository.findAll({order: [['department_name', 'ASC']]});
     }
 }

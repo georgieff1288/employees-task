@@ -31,6 +31,8 @@
   "Enter a valid email": "Enter a valid email",
   "Password must be at least 6 symbols": "Password must be at least 6 symbols",
   "Filter": "Filter",
-  "All departments": "All departments",
-  "ALl cities": "ALl cities"
+  "All": "All",
+  "Filter by department": "Filter by department",
+  "Filter by city": "Filter by city",
+  "There is no employees": "There is no employees"
 }

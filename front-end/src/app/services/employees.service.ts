@@ -10,14 +10,19 @@ import { City } from '../models/city.model';
   providedIn: 'root'
 })
 export class EmployeesService {
-  private baseUrl: string = 'employees/';
+  private baseUrl: string = 'employees';
   numOfEmployees = new BehaviorSubject<number>(0);
   numOfEmployeesObservable = this.numOfEmployees.asObservable();
 
   constructor(private httpService: HttpService) { }
 
-  getAllEmployees(filters?: {}): Observable<Employee[]> {
-    return this.httpService.get(this.baseUrl);
+  getAllEmployees(filters?: any): Observable<Employee[]> {
+    let url = this.baseUrl;
+    if(filters){
+      url = url + `?city=${filters.filters.city}&departmentId=${filters.filters.departmentId}`;
+      return this.httpService.get(url);
+    }
+    return this.httpService.get(url);
   }
 
   addEmployee(employee: any): Observable<Employee> {
@@ -25,16 +30,16 @@ export class EmployeesService {
   }
 
   deleteEmployee(obj: any): Observable<Employee> {
-    let url = this.baseUrl + obj.id;
+    let url = this.baseUrl + '/' + obj.id;
     return this.httpService.delete(url);
   }
   getEmployeeById(id: number): Observable<Employee> {
-    let url = this.baseUrl + id;
+    let url = this.baseUrl + '/' + id;
     return this.httpService.get(url);
   }
 
   editEmployee(employee: Employee, id: number): Observable<Employee> {
-    let url = this.baseUrl + id;
+    let url = this.baseUrl + '/' + id;
     return this.httpService.put(url, employee);
   }
 
@@ -42,7 +47,7 @@ export class EmployeesService {
     return this.httpService.get('departments');
   }
   getCities(): Observable<City[]>{
-    let url = this.baseUrl + 'cities';
+    let url = this.baseUrl + '/cities';
     return this.httpService.get(url);
   }
 }

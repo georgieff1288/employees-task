@@ -69,9 +69,9 @@ export class EmployeesEffects {
 
   filterEmployee$ = createEffect(() => this.actions$.pipe(
       ofType('[Employees List] Filter Employees List'),
-      mergeMap((filters:{}) => this.emp.getAllEmployees(filters)
+      mergeMap((filters:any) => this.emp.getAllEmployees(filters)
         .pipe(
-          map(() => ({ type: '[Employees List] Load Employees'})),
+          map((employees) => ({ type: '[Employees API] Employees Loaded Success', employees})),
           catchError(() => EMPTY)
         )
       )

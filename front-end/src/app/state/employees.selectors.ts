@@ -1,23 +1,24 @@
 import { createSelector } from '@ngrx/store';
 
 
-export const selectEmployees = (state: any) => state.employees;
+export const selectState = (state: any) => state.employees;
 
 export const selectEmployeesList = createSelector(
-  selectEmployees,
+  selectState,
   (state: any) => state.employees
 );
 
-export const selectCities = (state: any) => state.employees;
-
 export const selectCitiesList = createSelector(
-  selectCities,
+  selectState,
   (state: any) => state.cities
 );
 
-export const selectDepartments = (state: any) => state.employees;
-
 export const selectDepartmentsList = createSelector(
-  selectDepartments,
+  selectState,
   (state: any) => state.departments
+);
+
+export const selectEmployeesCount = createSelector(
+  selectState,
+  (state: any) => state.employees.length
 );
