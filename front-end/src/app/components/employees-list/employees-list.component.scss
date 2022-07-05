@@ -74,6 +74,14 @@ table {
   }
 }
 
+.edit-btn:hover{
+  background: rgb(47, 126, 215);
+}
+
+.delete-btn:hover{
+  background: rgb(168, 114, 114);
+}
+
 .btn-col{
   display: flex;
   justify-content: space-around;

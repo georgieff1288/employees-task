@@ -35,6 +35,10 @@ mat-form-field{
   }
 }
 
+.btn:hover{
+  background-color: rgb(194, 211, 222);
+}
+
 .btn:active {
   transform: scale(0.9);
 }

@@ -16,7 +16,6 @@ export class EmployeesController {
 
     @Get()
     getAllEmployees(@Query() params: OptionsDto): Promise<{}> {
-        console.log(params)
         return this.employeeService.getAllEmployees(params);
     }
 
