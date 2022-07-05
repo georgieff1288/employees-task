@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Employee } from "../models/employee.model";
 import { BehaviorSubject, Observable } from "rxjs";
 import { HttpService } from "./http.service";
-import {Department} from "../models/department.model";
 import { City } from '../models/city.model';
 
 
@@ -16,14 +15,8 @@ export class EmployeesService {
 
   constructor(private httpService: HttpService) { }
 
-  getAllEmployees(pageIndex?: any, pageSize?: any, filters?: any): Observable<{}> {
-    // console.log(pageIndex + ' - ' + pageSize)
-
-    let url = this.baseUrl;
-    if(filters){
-      url = url + `?city=${filters.filters.city}&departmentId=${filters.filters.departmentId}&pageIndex=${pageIndex}&pageSize=${pageSize}`;
-      return this.httpService.get(url);
-    }
+  getAllEmployees(options: any): Observable<{}> {
+    let url = this.baseUrl + `?city=${options.options.city}&departmentId=${options.options.departmentId}&pageIndex=${options.options.pageIndex}&pageSize=${options.options.pageSize}`;
     return this.httpService.get(url);
   }
 

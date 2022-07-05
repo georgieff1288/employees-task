@@ -19,5 +19,5 @@ export const selectDepartmentsList = createSelector(
 
 export const selectEmployeesCount = createSelector(
   selectState,
-  (state: any) => state.employees.count
+  (state: any) => state.employees.employeesCount
 );

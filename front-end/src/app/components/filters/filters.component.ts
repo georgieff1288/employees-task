@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {EmployeesService} from "../../services/employees.service";
 import {Subscription} from "rxjs";
 import {FormControl, FormGroup} from "@angular/forms";
 import {Store} from "@ngrx/store";
-import {filterEmployees} from "../../state/employees.actions";
+import {retrieveEmployees} from "../../state/employees.actions";
 import {selectCitiesList, selectDepartmentsList} from "../../state/employees.selectors";
 
 @Component({
@@ -19,6 +19,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     departmentId: new FormControl(),
     city: new FormControl()
   });
+  @Output() callbackFunction: EventEmitter<any> = new EventEmitter();
 
   constructor(private emp: EmployeesService, private store: Store) {
     this.store.dispatch({ type: '[Filters] Load Filters' });
@@ -42,10 +43,17 @@ export class FiltersComponent implements OnInit, OnDestroy {
     if(!this.filterForm.value.city && !this.filterForm.value.departmentId){
       return;
     }
-    let filters ={
+    let options ={
+      pageIndex: 0,
+      pageSize: 3,
       departmentId:  this.filterForm.value.departmentId,
       city:  this.filterForm.value.city
     };
-    this.store.dispatch(filterEmployees({ filters }));
+    let filters = {
+      departmentId:  this.filterForm.value.departmentId,
+      city:  this.filterForm.value.city
+    }
+    this.callbackFunction.emit(filters);
+    this.store.dispatch(retrieveEmployees({ options }));
   }
 }

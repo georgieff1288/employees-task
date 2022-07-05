@@ -4,7 +4,6 @@ import {
   retrieveEmployees,
   loadEmployees,
   deleteEmployee,
-  filterEmployees,
   retrieveFilters,
   loadFilters
 } from './employees.actions';
@@ -15,7 +14,7 @@ import {Department} from "../models/department.model";
 export interface State {
   employees: {
     employeesList: Employee[],
-    count: number
+    employeesCount: number
   },
   filters:{
     cities: City[],
@@ -26,7 +25,7 @@ export interface State {
 export const initialState: State = {
   employees: {
     employeesList: [],
-    count: 0
+    employeesCount: 0
   },
   filters:{
     cities: [],
@@ -36,11 +35,10 @@ export const initialState: State = {
 
 export const employeesReducer = createReducer(
   initialState,
-  on(retrieveEmployees, (state, {pageIndex, pageSize}) => state),
+  on(retrieveEmployees, (state, {options}) => state),
   on(loadEmployees, (state, {res}) => ({...state, employees: res})),
   on(addEmployee, (state, employee) => state),
   on(deleteEmployee, (state, id) => state),
-  on(filterEmployees, (state, filters) => state),
   on(retrieveFilters, (state) => state),
   on(loadFilters, (state, {filters}) => ({...state, filters: filters})),
 );

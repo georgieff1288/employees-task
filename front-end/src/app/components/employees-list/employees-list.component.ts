@@ -6,7 +6,7 @@ import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.com
 import { Employee } from "../../models/employee.model"
 import {Store} from "@ngrx/store";
 import {deleteEmployee, retrieveEmployees} from "../../state/employees.actions";
-import { selectEmployeesList } from "../../state/employees.selectors";
+import {selectEmployeesCount, selectEmployeesList} from "../../state/employees.selectors";
 import {MatPaginator} from "@angular/material/paginator";
 
 
@@ -25,13 +25,18 @@ export class EmployeesListComponent implements OnInit, OnDestroy, AfterViewInit 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   storeEmployees$ = this.store.select(selectEmployeesList);
+  employeesCounter$ = this.store.select(selectEmployeesCount);
+  filters = {
+    city: null,
+    departmentId: null
+  }
 
   constructor(private emp: EmployeesService, public dialog: MatDialog, private store: Store) {
     // this.store.dispatch({ type: '[Employees List] Load Employees' });
-    this.loadEmployees();
   }
 
   ngOnInit(): void {
+    this.loadEmployees();
     // this.getSubscription = this.emp.getAllEmployees().subscribe({
     //   next: (res: Employee[]) => {
     //     if(res.length == 0){
@@ -53,7 +58,19 @@ export class EmployeesListComponent implements OnInit, OnDestroy, AfterViewInit 
   }
 
   loadEmployees(){
-    this.store.dispatch(retrieveEmployees({pageIndex: this.paginator?.pageIndex ?? 0, pageSize: this.paginator?.pageSize ?? 3}));
+    let options = {
+      pageIndex: this.paginator?.pageIndex ?? 0,
+      pageSize: this.paginator?.pageSize ?? 3,
+      city: this.filters.city,
+      departmentId: this.filters.departmentId
+    }
+    this.store.dispatch(retrieveEmployees({options}));
+  }
+
+  getFilters(filters: any){
+    this.filters = filters;
+    this.paginator.pageIndex = 0;
+    this.paginator.pageSize = 3;
   }
 
   openDialog(name: string, id: number): void {

@@ -13,7 +13,7 @@ export class EmployeesEffects {
 
   loadEmployees$ = createEffect(() => this.actions$.pipe(
       ofType('[Employees List] Load Employees'),
-      mergeMap((pageIndex, pageSize) => this.emp.getAllEmployees(pageIndex, pageSize)
+      mergeMap((options: any) => this.emp.getAllEmployees(options)
         .pipe(
           map(res => ({ type: '[Employees API] Employees Loaded Success', res })),
           catchError(() => EMPTY)
@@ -49,17 +49,6 @@ export class EmployeesEffects {
       mergeMap((id:number) => this.emp.deleteEmployee(id)
         .pipe(
           map(() => ({ type: '[Employees List] Load Employees'})),
-          catchError(() => EMPTY)
-        )
-      )
-    )
-  );
-
-  filterEmployee$ = createEffect(() => this.actions$.pipe(
-      ofType('[Employees List] Filter Employees List'),
-      mergeMap((filters:any) => this.emp.getAllEmployees(0, 3, filters)
-        .pipe(
-          map((res) => ({ type: '[Employees API] Employees Loaded Success', res})),
           catchError(() => EMPTY)
         )
       )

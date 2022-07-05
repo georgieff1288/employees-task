@@ -4,7 +4,7 @@ import { Employee } from "../../modules/employee/employee.entity";
 import { AddEmployeeDto } from "../../dtos/add-employee.dto";
 import { FindOneParams } from "../../dtos/find-one-params";
 import { AuthGuard } from "../../guards/auth.guard";
-import {FiltersDto} from "../../dtos/filters.dto";
+import {OptionsDto} from "../../dtos/options.dto";
 import {DepartmentsService} from "../../services/departments/departments.service";
 
 
@@ -15,8 +15,10 @@ export class EmployeesController {
     }
 
     @Get()
-    getAllEmployees(@Query() params: FiltersDto): Promise<{}> {
+    getAllEmployees(@Query() params: OptionsDto): Promise<{}> {
         console.log(params)
+        params.pageIndex = Number(params.pageIndex);
+        params.pageSize = Number(params.pageSize)
         return this.employeeService.getAllEmployees(params);
     }
 

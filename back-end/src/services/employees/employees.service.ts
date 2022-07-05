@@ -17,11 +17,17 @@ export class EmployeesService {
             city: {[Op.ne]: null},
             department_id: {[Op.ne]: null}
         };
-        if(params.city && params.city != 'null'){
+        if(params.city != 'null'){
             filters.city = params.city;
         }
-        if(params.departmentId && params.departmentId != 'null'){
+        if(params.departmentId != 'null'){
             filters.department_id = params.departmentId;
+        }
+        if(!params.pageIndex){
+            params.pageIndex = 0;
+        }
+        if(!params.pageSize){
+            params.pageSize = 3;
         }
         let employeesCount = await this.employeesRepository.count({where: filters});
         let employeesList = await this.employeesRepository.findAll<Employee>({
@@ -30,12 +36,14 @@ export class EmployeesService {
                 model: Department,
                 as: 'department'
             }],
-            order: [['employee_name', 'ASC']]
+            order: [['employee_name', 'ASC']],
+            limit: params.pageSize,
+            offset: params.pageIndex*params.pageSize
         });
 
         return {
             employeesList: employeesList,
-            count: employeesCount
+            employeesCount: employeesCount
         }
     }
 

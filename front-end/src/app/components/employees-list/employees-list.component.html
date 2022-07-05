@@ -1,7 +1,7 @@
 <!--<p class="large-text msg" *ngIf="notificationMsg">{{notificationMsg | translate}}.</p>-->
 
 <app-error-message [errorMsg]="errorMsg"></app-error-message>
-<app-filters></app-filters>
+<app-filters (callbackFunction)="getFilters($event)"></app-filters>
 <p class="medium-text msg" *ngIf="!(storeEmployees$ | async)?.length">{{'There is no employees' | translate}}</p>
 <!--*ngIf="employees.value.length > 0"-->
 <div class="table-container" *ngIf="(storeEmployees$ | async)?.length">
@@ -40,7 +40,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <mat-paginator class="paginator"
-                   [length]="(storeEmployees$ | async)?.length"
+                   [length]="(employeesCounter$ | async)"
                    [pageSize]="3"
                    [pageSizeOptions]="[3, 5, 10]"
                    aria-label="Select page">
