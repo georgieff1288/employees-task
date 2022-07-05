@@ -22,8 +22,7 @@ export class EmployeesListComponent implements OnInit, OnDestroy, AfterViewInit 
   notificationMsg: string = '';
   getSubscription!: Subscription;
   delSubscription!: Subscription;
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   storeEmployees$ = this.store.select(selectEmployeesList);
   employeesCounter$ = this.store.select(selectEmployeesCount);
   filters = {

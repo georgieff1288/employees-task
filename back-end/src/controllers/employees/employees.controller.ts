@@ -17,8 +17,6 @@ export class EmployeesController {
     @Get()
     getAllEmployees(@Query() params: OptionsDto): Promise<{}> {
         console.log(params)
-        params.pageIndex = Number(params.pageIndex);
-        params.pageSize = Number(params.pageSize)
         return this.employeeService.getAllEmployees(params);
     }
 

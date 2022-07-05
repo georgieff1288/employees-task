@@ -4,11 +4,17 @@ import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import {EmployeesService} from "../services/employees.service";
 import {Employee} from "../models/employee.model";
+import {Store} from "@ngrx/store";
 
 @Injectable()
 export class EmployeesEffects {
-
-  constructor(private actions$: Actions, private emp: EmployeesService)
+  options = {
+    city: 'null',
+    departmentId: 'null',
+    pageSize: 3,
+    pageIndex: 0
+  }
+  constructor(private actions$: Actions, private emp: EmployeesService, private store: Store)
   {}
 
   loadEmployees$ = createEffect(() => this.actions$.pipe(
@@ -37,7 +43,7 @@ export class EmployeesEffects {
       ofType('[Add Employee] Add Employee'),
       mergeMap((employee:Employee) => this.emp.addEmployee(employee)
         .pipe(
-          map(() => ({ type: '[Employees List] Load Employees'})),
+          map(() => ({ type: '[Employees List] Load Employees', options: this.options})),
           catchError(() => EMPTY)
         )
       )
@@ -48,7 +54,7 @@ export class EmployeesEffects {
       ofType('[Employees List] Delete Employee'),
       mergeMap((id:number) => this.emp.deleteEmployee(id)
         .pipe(
-          map(() => ({ type: '[Employees List] Load Employees'})),
+          map(() => ({ type: '[Employees List] Load Employees', options: this.options})),
           catchError(() => EMPTY)
         )
       )

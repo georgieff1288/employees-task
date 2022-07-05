@@ -15,8 +15,11 @@ export class EmployeesService {
 
   constructor(private httpService: HttpService) { }
 
-  getAllEmployees(options: any): Observable<{}> {
-    let url = this.baseUrl + `?city=${options.options.city}&departmentId=${options.options.departmentId}&pageIndex=${options.options.pageIndex}&pageSize=${options.options.pageSize}`;
+  getAllEmployees(options?: any): Observable<{}> {
+    let url = this.baseUrl;
+    if(options){
+      url = url + `?city=${options.options.city}&departmentId=${options.options.departmentId}&pageIndex=${options.options.pageIndex}&pageSize=${options.options.pageSize}`;
+    }
     return this.httpService.get(url);
   }
 

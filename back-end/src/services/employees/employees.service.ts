@@ -17,10 +17,10 @@ export class EmployeesService {
             city: {[Op.ne]: null},
             department_id: {[Op.ne]: null}
         };
-        if(params.city != 'null'){
+        if(params.city && params.city != 'null'){
             filters.city = params.city;
         }
-        if(params.departmentId != 'null'){
+        if(params.departmentId && params.departmentId != 'null'){
             filters.department_id = params.departmentId;
         }
         if(!params.pageIndex){
@@ -29,6 +29,8 @@ export class EmployeesService {
         if(!params.pageSize){
             params.pageSize = 3;
         }
+        params.pageIndex = Number(params.pageIndex);
+        params.pageSize = Number(params.pageSize);
         let employeesCount = await this.employeesRepository.count({where: filters});
         let employeesList = await this.employeesRepository.findAll<Employee>({
             where: filters,
