@@ -5,33 +5,42 @@ import {
   loadEmployees,
   deleteEmployee,
   filterEmployees,
-  retrieveCities, loadCities, retrieveDepartments, loadDepartments
+  retrieveFilters,
+  loadFilters
 } from './employees.actions';
 import {Employee} from "../models/employee.model";
 import {City} from "../models/city.model";
 import {Department} from "../models/department.model";
 
 export interface State {
-  employees: Employee[],
-  cities: City[],
-  departments: Department[]
+  employees: {
+    employeesList: Employee[],
+    count: number
+  },
+  filters:{
+    cities: City[],
+    departments: Department[]
+  }
 }
 
 export const initialState: State = {
-  employees: [],
-  cities: [],
-  departments: []
+  employees: {
+    employeesList: [],
+    count: 0
+  },
+  filters:{
+    cities: [],
+    departments: []
+  }
 };
 
 export const employeesReducer = createReducer(
   initialState,
-  on(retrieveEmployees, (state) => state),
-  on(loadEmployees, (state, {employees}) => ({...state, employees: employees})),
+  on(retrieveEmployees, (state, {pageIndex, pageSize}) => state),
+  on(loadEmployees, (state, {res}) => ({...state, employees: res})),
   on(addEmployee, (state, employee) => state),
   on(deleteEmployee, (state, id) => state),
   on(filterEmployees, (state, filters) => state),
-  on(retrieveCities, (state) => state),
-  on(loadCities, (state, {cities}) => ({...state, cities: cities})),
-  on(retrieveDepartments, (state) => state),
-  on(loadDepartments, (state, {departments}) => ({...state, departments: departments})),
+  on(retrieveFilters, (state) => state),
+  on(loadFilters, (state, {filters}) => ({...state, filters: filters})),
 );

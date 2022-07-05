@@ -1,8 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EmployeesService} from "../../services/employees.service";
 import {Subscription} from "rxjs";
-import {Department} from "../../models/department.model";
-import { City } from 'src/app/models/city.model';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Store} from "@ngrx/store";
 import {filterEmployees} from "../../state/employees.actions";
@@ -23,8 +21,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
   });
 
   constructor(private emp: EmployeesService, private store: Store) {
-    this.store.dispatch({ type: '[Filters] Load Cities' });
-    this.store.dispatch({ type: '[Filters] Load Departments' });
+    this.store.dispatch({ type: '[Filters] Load Filters' });
   }
 
   ngOnInit(): void {

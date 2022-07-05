@@ -5,20 +5,19 @@ export const selectState = (state: any) => state.employees;
 
 export const selectEmployeesList = createSelector(
   selectState,
-  (state: any) => state.employees
-);
+  (state: any) => state.employees.employeesList);
 
 export const selectCitiesList = createSelector(
   selectState,
-  (state: any) => state.cities
+  (state: any) => state.filters.cities
 );
 
 export const selectDepartmentsList = createSelector(
   selectState,
-  (state: any) => state.departments
+  (state: any) => state.filters.departments
 );
 
 export const selectEmployeesCount = createSelector(
   selectState,
-  (state: any) => state.employees.length
+  (state: any) => state.employees.count
 );

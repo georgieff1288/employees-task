@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from "@angular/material/paginator";
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTableModule,
     MatDialogModule,
     MatSelectModule,
+    MatPaginatorModule,
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({

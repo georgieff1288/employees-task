@@ -12,7 +12,7 @@ export class EmployeesService {
     ) {
     }
 
-    async getAllEmployees(params): Promise<Employee[]> {
+    async getAllEmployees(params): Promise<{}> {
         let filters = {
             city: {[Op.ne]: null},
             department_id: {[Op.ne]: null}
@@ -23,7 +23,8 @@ export class EmployeesService {
         if(params.departmentId && params.departmentId != 'null'){
             filters.department_id = params.departmentId;
         }
-        return await this.employeesRepository.findAll<Employee>({
+        let employeesCount = await this.employeesRepository.count({where: filters});
+        let employeesList = await this.employeesRepository.findAll<Employee>({
             where: filters,
             include:[{
                 model: Department,
@@ -31,6 +32,11 @@ export class EmployeesService {
             }],
             order: [['employee_name', 'ASC']]
         });
+
+        return {
+            employeesList: employeesList,
+            count: employeesCount
+        }
     }
 
     async addEmployee(emp): Promise<Employee> {

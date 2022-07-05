@@ -16,10 +16,12 @@ export class EmployeesService {
 
   constructor(private httpService: HttpService) { }
 
-  getAllEmployees(filters?: any): Observable<Employee[]> {
+  getAllEmployees(pageIndex?: any, pageSize?: any, filters?: any): Observable<{}> {
+    // console.log(pageIndex + ' - ' + pageSize)
+
     let url = this.baseUrl;
     if(filters){
-      url = url + `?city=${filters.filters.city}&departmentId=${filters.filters.departmentId}`;
+      url = url + `?city=${filters.filters.city}&departmentId=${filters.filters.departmentId}&pageIndex=${pageIndex}&pageSize=${pageSize}`;
       return this.httpService.get(url);
     }
     return this.httpService.get(url);
@@ -43,11 +45,8 @@ export class EmployeesService {
     return this.httpService.put(url, employee);
   }
 
-  getDepartments(): Observable<Department[]>{
-    return this.httpService.get('departments');
-  }
-  getCities(): Observable<City[]>{
-    let url = this.baseUrl + '/cities';
+  getFilters(): Observable<City[]>{
+    let url = this.baseUrl + '/filters';
     return this.httpService.get(url);
   }
 }

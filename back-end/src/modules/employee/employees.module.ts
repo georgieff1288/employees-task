@@ -7,6 +7,8 @@ import { IsValueExistDecorator } from "../../decorators/isValueExist.decorator";
 import { JwtService } from "../../services/jwt/jwt.service";
 import { AuthService } from "../../services/auth/auth.service";
 import { authProviders } from "../auth/auth.providers";
+import {DepartmentsService} from "../../services/departments/departments.service";
+import {departmentsProviders} from "../department/departments.providers";
 
 
 
@@ -23,6 +25,8 @@ import { authProviders } from "../auth/auth.providers";
         JwtService,
         AuthService,
         ...authProviders,
+        DepartmentsService,
+        ...departmentsProviders
     ],
 })
 export class EmployeesModule {}

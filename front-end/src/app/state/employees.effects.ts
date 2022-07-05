@@ -13,37 +13,25 @@ export class EmployeesEffects {
 
   loadEmployees$ = createEffect(() => this.actions$.pipe(
       ofType('[Employees List] Load Employees'),
-      mergeMap(() => this.emp.getAllEmployees()
+      mergeMap((pageIndex, pageSize) => this.emp.getAllEmployees(pageIndex, pageSize)
         .pipe(
-          map(employees => ({ type: '[Employees API] Employees Loaded Success', employees })),
+          map(res => ({ type: '[Employees API] Employees Loaded Success', res })),
           catchError(() => EMPTY)
         )
       )
     )
   );
 
-  loadCities$ = createEffect(() => this.actions$.pipe(
-      ofType('[Filters] Load Cities'),
-      mergeMap(() => this.emp.getCities()
+  loadFilters$ = createEffect(() => this.actions$.pipe(
+      ofType('[Filters] Load Filters'),
+      mergeMap(() => this.emp.getFilters()
         .pipe(
-          map(cities => ({ type: '[Cities API] Cities Loaded Success', cities })),
+          map(filters => ({ type: '[Filters API] Filters Loaded Success', filters })),
           catchError(() => EMPTY)
         )
       )
     )
   );
-
-  loadDepartments$ = createEffect(() => this.actions$.pipe(
-      ofType('[Filters] Load Departments'),
-      mergeMap(() => this.emp.getDepartments()
-        .pipe(
-          map(departments => ({ type: '[Departments API] Departments Loaded Success', departments })),
-          catchError(() => EMPTY)
-        )
-      )
-    )
-  );
-
 
   addEmployee$ = createEffect(() => this.actions$.pipe(
       ofType('[Add Employee] Add Employee'),
@@ -69,9 +57,9 @@ export class EmployeesEffects {
 
   filterEmployee$ = createEffect(() => this.actions$.pipe(
       ofType('[Employees List] Filter Employees List'),
-      mergeMap((filters:any) => this.emp.getAllEmployees(filters)
+      mergeMap((filters:any) => this.emp.getAllEmployees(0, 3, filters)
         .pipe(
-          map((employees) => ({ type: '[Employees API] Employees Loaded Success', employees})),
+          map((res) => ({ type: '[Employees API] Employees Loaded Success', res})),
           catchError(() => EMPTY)
         )
       )

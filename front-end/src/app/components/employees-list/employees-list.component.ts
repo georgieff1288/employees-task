@@ -1,12 +1,13 @@
-import {Component, OnDestroy, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { EmployeesService } from "../../services/employees.service";
-import {BehaviorSubject, Subscription} from "rxjs";
+import {BehaviorSubject, Subscription, tap} from "rxjs";
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalComponent } from "../shared/confirm-modal/confirm-modal.component";
 import { Employee } from "../../models/employee.model"
 import {Store} from "@ngrx/store";
-import {deleteEmployee} from "../../state/employees.actions";
+import {deleteEmployee, retrieveEmployees} from "../../state/employees.actions";
 import { selectEmployeesList } from "../../state/employees.selectors";
+import {MatPaginator} from "@angular/material/paginator";
 
 
 @Component({
@@ -14,18 +15,20 @@ import { selectEmployeesList } from "../../state/employees.selectors";
   templateUrl: './employees-list.component.html',
   styleUrls: ['./employees-list.component.scss'],
 })
-export class EmployeesListComponent implements OnInit, OnDestroy {
+export class EmployeesListComponent implements OnInit, OnDestroy, AfterViewInit {
   employees = new BehaviorSubject<Employee[]>([]);
   errorMsg: string = '';
   displayedColumns: string[] = ['name', 'department', 'phone', 'city', 'street', 'buttons'];
   notificationMsg: string = '';
   getSubscription!: Subscription;
   delSubscription!: Subscription;
-
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
   storeEmployees$ = this.store.select(selectEmployeesList);
 
   constructor(private emp: EmployeesService, public dialog: MatDialog, private store: Store) {
-    this.store.dispatch({ type: '[Employees List] Load Employees' });
+    // this.store.dispatch({ type: '[Employees List] Load Employees' });
+    this.loadEmployees();
   }
 
   ngOnInit(): void {
@@ -42,6 +45,15 @@ export class EmployeesListComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.delSubscription?.unsubscribe();
+  }
+  ngAfterViewInit() {
+    this.paginator.page.pipe(
+      tap(() => this.loadEmployees())
+    ).subscribe();
+  }
+
+  loadEmployees(){
+    this.store.dispatch(retrieveEmployees({pageIndex: this.paginator?.pageIndex ?? 0, pageSize: this.paginator?.pageSize ?? 3}));
   }
 
   openDialog(name: string, id: number): void {

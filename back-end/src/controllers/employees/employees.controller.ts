@@ -5,16 +5,18 @@ import { AddEmployeeDto } from "../../dtos/add-employee.dto";
 import { FindOneParams } from "../../dtos/find-one-params";
 import { AuthGuard } from "../../guards/auth.guard";
 import {FiltersDto} from "../../dtos/filters.dto";
+import {DepartmentsService} from "../../services/departments/departments.service";
 
 
 @Controller('api/employees')
 @UseGuards(AuthGuard)
 export class EmployeesController {
-    constructor(private  readonly employeeService: EmployeesService) {
+    constructor(private  readonly employeeService: EmployeesService, private readonly departmentService: DepartmentsService) {
     }
 
     @Get()
-    getAllEmployees(@Query() params: FiltersDto): Promise<Employee[]> {
+    getAllEmployees(@Query() params: FiltersDto): Promise<{}> {
+        console.log(params)
         return this.employeeService.getAllEmployees(params);
     }
 
@@ -23,9 +25,14 @@ export class EmployeesController {
         return this.employeeService.addEmployee(employee);
     }
 
-    @Get('/cities')
-    getCities(){
-        return this.employeeService.getCities();
+    @Get('/filters')
+    async getFilters(){
+        let departments = await this.departmentService.getDepartments();
+        let cities = await this.employeeService.getCities();
+        return {
+            cities: cities,
+            departments: departments
+        }
     }
 
     @Delete('/:id')
