@@ -1,0 +1,18 @@
+@import "../../../../scss/variables";
+
+.msg{
+  text-align: center;
+  color: red;
+  padding: 0 10vw 0 10vw;
+  @media (max-width: $breakpoint-small) {
+    padding: 0;
+  }
+}
+
+.error-msg-container{
+  display: flex;
+  justify-content: center;
+  content: '';
+  height: 50px;
+}
+

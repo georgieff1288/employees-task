@@ -1,0 +1,70 @@
+@import "../../../scss/variables";
+
+.form-container{
+  display: flex;
+  justify-content: center;
+}
+
+.title{
+  text-align: center;
+}
+
+.row{
+  display: flex;
+  @media (max-width: $breakpoint-small) {
+    display: block;
+  }
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+}
+.input-div{
+  margin: 0 1vw 0 1vw;
+}
+
+span{
+  color: red;
+}
+
+input{
+  background:$input-background;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  height: 35px;
+  width: 30vw;
+  border-radius: 5px;
+  @media (max-width: $breakpoint-small) {
+    width: 80vw;
+  }
+}
+
+.btn-div{
+  display: flex;
+  justify-content: center;
+}
+
+.btn{
+  border-style: none;
+  cursor: pointer;
+  width: 10vw;
+  height: 35px;
+  border-radius: 5px;
+  background-color: $btn-color;
+  font-family: 'Roboto, sans-serif';
+  font-size: 17px;
+  font-weight: bold;
+  color: $secondary-text-color;
+  @media (max-width: $breakpoint-large) {
+    width: 40vw;
+  }
+}
+
+.btn:hover{
+  background-color: $btn-hover-color
+}
+
+#btn-login:disabled{
+  background-color: $btn-disabled-color
+}

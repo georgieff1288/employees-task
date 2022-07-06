@@ -1,0 +1,28 @@
+.btn-div{
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn-div button{
+  cursor: pointer;
+  padding: 5px;
+  display: block;
+}
+
+.small-text{
+  text-align: center;
+}
+
+.overlay {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  position: relative;
+}

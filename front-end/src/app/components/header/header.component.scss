@@ -1,0 +1,35 @@
+@import "../../../scss/variables";
+@import "../../../scss/variables";
+
+.header-container{
+  padding: 0 8vw 0 8vw;
+  min-height: 60px;
+  background: $header-background;
+  box-shadow: rgba(0, 0, 255, 0.35) 0px -50px 36px -28px inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: $breakpoint-small) {
+    padding: 0 0 15px 0;
+    flex-direction: column;
+  }
+}
+
+.header-container a {
+  cursor: pointer;
+  padding: 5px 7px 5px 7px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0 10px 0 10px;
+  @media (max-width: $breakpoint-small) {
+    font-size: 20px;
+  }
+}
+
+.header-container a:hover{
+  background: rgb(0, 92, 230);
+}
+select{
+  cursor: pointer;
+  border-radius: 5px;
+}

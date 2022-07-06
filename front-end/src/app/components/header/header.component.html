@@ -1,0 +1,10 @@
+<div class="header-container">
+  <a class="medium-text" *ngIf="auth.isLoggedIn" routerLink="/">{{'Employees' | translate}}</a>
+  <a class="medium-text" *ngIf="auth.isLoggedIn" routerLink="/add-employee">{{'Add employee' | translate}}</a>
+  <a class="medium-text" *ngIf="!auth.isLoggedIn" routerLink="/login">{{'Login' | translate}}</a>
+  <a class="medium-text" *ngIf="auth.isLoggedIn" (click)="logout()">{{'Logout' | translate}}</a>
+  <select class="small-text" (change)="onChange($event)" >
+    <option value="en">En</option>
+    <option value="bg">Bg</option>
+  </select>
+</div>
