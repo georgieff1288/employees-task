@@ -10,6 +10,8 @@ import {selectEmployeesCount, selectEmployeesList} from "../../state/employees.s
 import {MatPaginator} from "@angular/material/paginator";
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import * as XLSX from "xlsx";
+
 
 
 @Component({
@@ -112,7 +114,9 @@ export class EmployeesListComponent implements OnInit, OnDestroy, AfterViewInit 
     doc.save('employees.pdf');
   }
 
-  generateXlxs(){
-    console.log('clicked')
+  generateXlsx(){
+    let table = document.getElementById("htmlTable");
+    let workbook = XLSX.utils.table_to_book(table);
+    XLSX.writeFile(workbook, "employees.xlsx");
   }
 }

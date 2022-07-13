@@ -40,7 +40,6 @@ export class FiltersComponent implements OnInit, OnDestroy {
     // }
   }
   filter(){
-    console.log('here')
     if(!this.filterForm.value.city && !this.filterForm.value.departmentId){
       return;
     }

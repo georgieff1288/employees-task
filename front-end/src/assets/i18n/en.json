@@ -34,5 +34,7 @@
   "All": "All",
   "Filter by department": "Filter by department",
   "Filter by city": "Filter by city",
-  "There is no employees": "There is no employees"
+  "There is no employees": "There is no employees",
+  "Export Pdf": "Export Pdf",
+  "Export Xlsx": "Export Xlsx"
 }

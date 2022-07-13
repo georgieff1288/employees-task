@@ -34,5 +34,7 @@
   "All": "Всички",
   "Filter by department": "Филтрирай по отдел",
   "Filter by city": "Филтрирай по град",
-  "There is no employees": "Няма служители"
+  "There is no employees": "Няма служители",
+  "Export Pdf": "Изтегли Pdf",
+  "Export Xlsx": "Изтегли Xlsx"
 }

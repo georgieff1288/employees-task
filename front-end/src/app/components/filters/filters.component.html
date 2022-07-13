@@ -1,7 +1,5 @@
 <div class="filters-container">
   <form [formGroup]="filterForm">
-<!--    <button class="btn" (click)="filter()">{{'Filter' | translate}}</button>-->
-
     <mat-form-field appearance="fill">
       <mat-label>{{'Filter by department' | translate}}</mat-label>
       <mat-select formControlName="departmentId" (selectionChange)="filter()">
