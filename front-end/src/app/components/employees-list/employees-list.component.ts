@@ -8,6 +8,10 @@ import {Store} from "@ngrx/store";
 import {deleteEmployee, retrieveEmployees} from "../../state/employees.actions";
 import {selectEmployeesCount, selectEmployeesList} from "../../state/employees.selectors";
 import {MatPaginator} from "@angular/material/paginator";
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import * as XLSX from "xlsx";
+
 
 
 @Component({
@@ -102,5 +106,17 @@ export class EmployeesListComponent implements OnInit, OnDestroy, AfterViewInit 
     //   },
     //   error: error => this.errorMsg = error
     // });
+  }
+
+  generatePdf(){
+    let doc = new jsPDF();
+    autoTable(doc, { html: '#htmlTable'});
+    doc.save('employees.pdf');
+  }
+
+  generateXlsx(){
+    let table = document.getElementById("htmlTable");
+    let workbook = XLSX.utils.table_to_book(table);
+    XLSX.writeFile(workbook, "employees.xlsx");
   }
 }

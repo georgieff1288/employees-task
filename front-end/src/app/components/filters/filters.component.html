@@ -1,10 +1,8 @@
 <div class="filters-container">
   <form [formGroup]="filterForm">
-    <button class="btn" (click)="filter()">{{'Filter' | translate}}</button>
-
     <mat-form-field appearance="fill">
       <mat-label>{{'Filter by department' | translate}}</mat-label>
-      <mat-select formControlName="departmentId">
+      <mat-select formControlName="departmentId" (selectionChange)="filter()">
         <mat-option value='null'>{{'All' | translate}}</mat-option>
         <mat-option *ngFor="let department of departments$ | async" [value]="department.department_id">
           {{department.department_name | translate}}
@@ -14,7 +12,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>{{'Filter by city' | translate}}</mat-label>
-      <mat-select formControlName="city">
+      <mat-select formControlName="city" (selectionChange)="filter()">
         <mat-option value='null'>{{'All' | translate}}</mat-option>
         <mat-option *ngFor="let city of cities$ | async" [value]="city.name">
           {{city.name}}
