@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
 import * as jwt from 'jsonwebtoken';
 import { AuthService } from "../auth/auth.service";
 
@@ -11,45 +11,52 @@ const {
 
 @Injectable()
 export class JwtService {
-    constructor(private readonly authService: AuthService) {
+    constructor(
+        private readonly authService: AuthService
+    ) {
     }
-    async createTokens(email): Promise<any> {
+    async createTokens(id, oldToken?): Promise<any> {
         let payloads = {
-            email: email
+            id: id
         };
         let token = jwt.sign(payloads, SECRET, {expiresIn: TOKEN_LIFE});
         let refreshToken = jwt.sign(payloads, REFRESH_TOKEN_SECRET, {expiresIn: REFRESH_TOKEN_LIFE});
-        await this.authService.addToken(email, refreshToken);
+        if(oldToken){
+            await this.authService.updateToken(oldToken, refreshToken);
+        }
+        else{
+            await this.authService.addToken(id, refreshToken);
+        }
         return [token, refreshToken];
     }
 
     async validateHeader(request): Promise<boolean> {
         let result;
+        let id;
         let authHeader = request.headers.authorization;
         if(authHeader){
             let token = authHeader.split(' ')[1];
-            let email;
             jwt.verify(token, SECRET, (err, decoded) => {
                 if(err){
                     result = false;
                     return;
                 }
-                email = decoded.email;
+                id = decoded.id;
             })
-            if(email){
-                let user = await this.authService.getUser(email);
-                result =  !!user
+            if(id){
+                let isUserExist = await this.authService.findUserById(id);
+                result =  !!isUserExist;
             }
         }
         return result;
     }
 
-    async validateRefreshToken(token): Promise<any> {
-        let result = await this.authService.findToken(token);
+    async validateRefreshToken(refreshToken): Promise<any> {
+        let result = await this.authService.findToken(refreshToken);
         if(!result){
             return [false];
         }
-        return jwt.verify(token, REFRESH_TOKEN_SECRET, (err, decoded) => {
+        return jwt.verify(refreshToken, REFRESH_TOKEN_SECRET, (err, decoded) => {
             if(err){
                 return [false];
             }

@@ -9,6 +9,7 @@ import { AuthService } from "../../services/auth/auth.service";
 import { authProviders } from "../auth/auth.providers";
 import {DepartmentsService} from "../../services/departments/departments.service";
 import {departmentsProviders} from "../department/departments.providers";
+import {refreshTokenProviders} from "../auth/refresh-token.providers";
 
 
 
@@ -26,7 +27,8 @@ import {departmentsProviders} from "../department/departments.providers";
         AuthService,
         ...authProviders,
         DepartmentsService,
-        ...departmentsProviders
+        ...departmentsProviders,
+        ...refreshTokenProviders
     ],
 })
 export class EmployeesModule {}

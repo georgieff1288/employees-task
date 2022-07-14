@@ -9,6 +9,7 @@ const config = {
     TOKEN_COOKIE_NAME: 'jwt',
     REFRESH_TOKEN_COOKIE_NAME: 'refresh-jwt',
     TOKEN_LIFE: '15m',
+    //Add refresh token life value in days!
     REFRESH_TOKEN_LIFE:'30d'
 }
 

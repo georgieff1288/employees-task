@@ -4,6 +4,7 @@ import { AuthController } from "../../controllers/auth/auth.controller";
 import { AuthService } from "../../services/auth/auth.service";
 import { authProviders } from "./auth.providers";
 import { JwtService } from "../../services/jwt/jwt.service";
+import {refreshTokenProviders} from "./refresh-token.providers";
 
 @Module({
     imports: [DatabaseModule],
@@ -11,7 +12,8 @@ import { JwtService } from "../../services/jwt/jwt.service";
     providers: [
         AuthService,
         ...authProviders,
-        JwtService
+        JwtService,
+        ...refreshTokenProviders
     ],
 })
 export class AuthModule {}
