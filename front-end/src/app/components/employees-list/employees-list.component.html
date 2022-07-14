@@ -41,18 +41,20 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <p class="medium-text msg" *ngIf="!(storeEmployees$ | async)?.length">{{'There is no employees' | translate}}</p>
-    <mat-paginator
-      class="paginator"
-      [length]="(employeesCounter$ | async)"
-      [pageSize]="3"
-      [pageSizeOptions]="[3, 5, 10]"
-      aria-label="Select page"
-    >
-    </mat-paginator>
-    <div class="export-buttons">
-      <button (click)="generatePdf()">{{'Export Pdf' | translate}}</button>
-      <button (click)="generateXlsx()">{{'Export Xlsx' | translate}}</button>
-    </div>
   </div>
+    <div class="bottom-buttons">
+      <mat-paginator
+        class="paginator"
+        [length]="(employeesCounter$ | async)"
+        [pageSize]="3"
+        [pageSizeOptions]="[3, 5, 10]"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+      <div class="export-buttons">
+        <button (click)="generatePdf()">{{'Export Pdf' | translate}}</button>
+        <button (click)="generateXlsx()">{{'Export Xlsx' | translate}}</button>
+      </div>
+    </div>
 </div>
 
