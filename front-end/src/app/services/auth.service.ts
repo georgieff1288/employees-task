@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from "./http.service";
-import {firstValueFrom, from, Observable} from "rxjs";
+import {from, Observable} from "rxjs";
 import { User } from "../models/user.model";
 import { Router } from '@angular/router';
 import { CookieService } from "ngx-cookie-service";
@@ -17,12 +17,10 @@ export class AuthService {
     return this.httpService.post(url, user);
   }
 
-  logout(): Promise<any> {
-    let refreshToken = {value: this.cookies.get('refresh-jwt')};
+  logout(): void {
     this.cookies.delete('jwt');
     this.cookies.delete('refresh-jwt');
     this.router.navigate(['login']);
-    return firstValueFrom(this.httpService.post(this.baseUrl + 'logout', refreshToken));
   }
 
   getToken(): string {

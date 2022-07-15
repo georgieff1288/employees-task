@@ -44,11 +44,6 @@ export class AuthController {
         });
     }
 
-    @Post('logout')
-    logout(@Body() refreshToken: any): Promise<any> {
-        return this.authService.deleteToken(refreshToken.value);
-    }
-
     @Get('token')
     async getNewToken(@Req() req: Request, @Res() res: Response): Promise<any> {
         let refreshToken = req.cookies[REFRESH_TOKEN_COOKIE_NAME];

@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { User } from "../../modules/auth/user.entity";
 import {Refresh_Token} from "../../modules/auth/refresh-token.entity";
+import {Op} from "sequelize";
 const {
     REFRESH_TOKEN_LIFE
 } = require('../../config');
@@ -43,14 +44,24 @@ export class AuthService {
     async findToken(refreshToken): Promise<Refresh_Token> {
         return await  this.tokenRepository.findOne({where: {token: refreshToken}});
     }
-    async deleteToken(refreshToken): Promise<number> {
-        return await this.tokenRepository.destroy({where: {token: refreshToken}})
-    }
+
     async updateToken(oldToken, newToken): Promise<any> {
         let token = {
             token: newToken,
             expiration_date: expirationDateGenerator()
         }
         return await this.tokenRepository.update(token, {where:{token: oldToken}});
+    }
+
+    async deleteExpiredTokens(): Promise<number>{
+        let date = new Date();
+        date.setDate(date.getDate() - 1);
+        return await this.tokenRepository.destroy({
+            where:{
+                expiration_date: {
+                    [Op.lt]: date
+                }
+            }
+        })
     }
 }
