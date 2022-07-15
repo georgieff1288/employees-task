@@ -1,0 +1,76 @@
+@import "../../../scss/variables";
+
+.container{;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input{
+  background:$input-background;
+  border-style: none;
+  height: 35px;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.content{
+  width: 30vw;
+  height: 70px;
+  font-size: 14px;
+}
+
+.messages-container{
+  overflow-y: auto;
+  width: 30vw;
+}
+
+.message{
+  display: inline-block;
+  background: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Roboto, sans-serif';
+  margin-bottom: 10px;
+  span{
+    font-weight: 550;
+  }
+}
+
+.isOwn{
+  float: right;
+}
+
+.btn{
+  border-style: none;
+  cursor: pointer;
+  width: 5vw;
+  height: 30px;
+  border-radius: 5px;
+  background-color: $btn-color;
+  font-family: 'Roboto, sans-serif';
+  font-size: 17px;
+  font-weight: bold;
+  color: $secondary-text-color;
+  @media (max-width: $breakpoint-large) {
+    width: 40vw;
+  }
+}
+
+.btn:hover{
+  background-color: $btn-hover-color
+}
+
+#btn-send:disabled{
+  background-color: $btn-disabled-color
+}

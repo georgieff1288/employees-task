@@ -17,6 +17,7 @@ import { employeesReducer } from './state/employees.reducer'
 import { EmployeesEffects } from "./state/employees.effects";
 
 import { HttpService } from "./services/http.service";
+import {WebsocketService} from "./services/websocket.service";
 
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
 import { TokenInterceptor } from "./interceptors/token.interceptor";
@@ -33,6 +34,8 @@ import { EditEmployeeComponent } from './components/edit-employee/edit-employee.
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { FiltersComponent } from './components/filters/filters.component';
+import { ChatComponent } from './components/chat/chat.component';
+
 
 
 
@@ -56,6 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddEmployeeComponent,
     AuthComponent,
     FiltersComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,6 +90,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    WebsocketService
   ],
   bootstrap: [AppComponent]
 })

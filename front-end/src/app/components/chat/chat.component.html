@@ -1,0 +1,12 @@
+<div class="container">
+  <div #feed class="messages-container">
+    <div *ngFor="let message of receivedMessages">
+      <div [ngClass]="{'isOwn': chatForm.value.username == message.sender}" class="message"><span>{{message.sender}}</span>: {{message.content}}</div>
+    </div>
+  </div>
+  <form [formGroup]="chatForm" (ngSubmit)="send()">
+    <input class="username" id="username" placeholder="Enter a username" type="text" formControlName="username">
+    <input class="content" id="content" placeholder="Type a message" type="text" formControlName="content">
+    <button class="btn" type="submit" id="btn-send" [disabled]="!chatForm.valid">{{'Send' | translate}}</button>
+  </form>
+</div>

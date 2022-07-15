@@ -63,6 +63,7 @@ export class AuthController {
         let tokens = await this.jwtService.createTokens(decoded[1].id, refreshToken);
         res.cookie(TOKEN_COOKIE_NAME, tokens[0]);
         res.cookie(REFRESH_TOKEN_COOKIE_NAME, tokens[1]);
+        res.locals
         return res.status(HttpStatus.OK).json({
             statusCode: 200,
             message: 'Created new access token'
