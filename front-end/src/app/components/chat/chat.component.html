@@ -7,8 +7,8 @@
     </div>
   </div>
   <form [formGroup]="chatForm" (ngSubmit)="send()">
-    <input class="username" id="username" placeholder="Enter a username" type="text" formControlName="username">
-    <input class="content" id="content" placeholder="Type a message" type="text" formControlName="content">
+    <input class="username" id="username" placeholder="{{'Enter a username' | translate}}" type="text" formControlName="username">
+    <input class="content" id="content" placeholder="{{'Type a message' | translate}}" type="text" formControlName="content">
     <button class="btn" type="submit" id="btn-send" [disabled]="!chatForm.valid">{{'Send' | translate}}</button>
   </form>
 </div>

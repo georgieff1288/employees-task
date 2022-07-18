@@ -36,5 +36,8 @@
   "Filter by city": "Filter by city",
   "There is no employees": "There is no employees",
   "Export Pdf": "Export Pdf",
-  "Export Xlsx": "Export Xlsx"
+  "Export Xlsx": "Export Xlsx",
+  "Send": "Send",
+  "Enter a username": "Enter a username",
+  "Type a message": "Type a message"
 }

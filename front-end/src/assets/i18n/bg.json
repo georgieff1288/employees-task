@@ -36,5 +36,8 @@
   "Filter by city": "Филтрирай по град",
   "There is no employees": "Няма служители",
   "Export Pdf": "Изтегли Pdf",
-  "Export Xlsx": "Изтегли Xlsx"
+  "Export Xlsx": "Изтегли Xlsx",
+  "Send": "Изпрати",
+  "Enter a username": "Въведи потребителско име",
+  "Type a message": "Напиши съобщение"
 }
