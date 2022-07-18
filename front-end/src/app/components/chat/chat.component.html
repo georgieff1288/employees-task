@@ -1,7 +1,9 @@
 <div class="container">
   <div #feed class="messages-container">
     <div *ngFor="let message of receivedMessages">
-      <div [ngClass]="{'isOwn': chatForm.value.username == message.sender}" class="message"><span>{{message.sender}}</span>: {{message.content}}</div>
+      <div [ngClass]="{'isOwn': chatForm.value.username == message.sender}" class="message-wrapper">
+        <div class="message"><span>{{message.sender}}</span>: {{message.content}}</div>
+      </div>
     </div>
   </div>
   <form [formGroup]="chatForm" (ngSubmit)="send()">
